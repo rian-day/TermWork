@@ -5,33 +5,105 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<style type="text/css">
+		body {
+			overflow:hidden;
+			margin:0;
+			padding:0;
+			background-color:#222222;
+		}
+	
+	</style>
+	<canvas id="canvasParticle">Canvas is not supported in your brower.</canvas>
+</head>
 </head>
 <body>
-	<div id="view">
-		<div id="box-top">
-				<div class="item" id="register">注册</div>
-				<div class="item" id="login">登录</div>
+	<div class="content">
+		<div class="view">
+			<div class="logo-box">
+				<img src="../img/logo/logo.png">
+				<h1>boke</h1>
 			</div>
-		<div id="box-left">
-			<form name="form1">
-				<div class="input-group">
-					<span class=" input-group-addon">账号</span>
-					<input type="text" name="uesrname" class="form-control">
-				</div>
-				<div class="input-group">
-					<span class=" input-group-addon">密码</span>
-					<input type="password" name="password" class="form-control">
-				</div>
-				<input type="submit" name="submit" 登入 class="btn btn-success" value="登入" id="in">
-				<button id="ln"></button>
-			</form>
-		</div>
-		<div id="box-right">
-			<img src="img/index/qr_code2.png"></img>
+
+			<div class="input-box">
+				<input type="text" id="username" placeholder="用户名/邮箱" class="form-control">
+				<input type="password" id="password" placeholder="登录密码" class="form-control">
+				<button class="btn btn-default" onclick="login()">登录</button>
+			</div>
 		</div>
 	</div>
-	
 </body>
-</html>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/login.js"></script>
+</html>	
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	window.onload = function() {
+    var oCanvas = document.getElementById('canvasParticle');
+    var cxt = null;
+    var particles = {};
+    var particleIndex = 0;
+
+    if (oCanvas.getContext) {
+        cxt = oCanvas.getContext('2d');
+    }
+
+    oCanvas.width = window.innerWidth;
+    oCanvas.height = window.innerHeight;
+
+    function Particle() {
+        particleIndex++;
+        particles[particleIndex] = this;
+
+        this.x = oCanvas.width / 2;
+        this.y = oCanvas.height / 2;
+        this.vx = Math.random() * 6 - 3;
+        this.vy = Math.random() * 4 - 2;
+        this.growth = (Math.abs(this.vx) + Math.abs(this.vy)) * 0.01; // 根据x/y轴的位置决定大小
+        this.id = particleIndex;
+        this.size = 0;
+        this.color = getRandomColor();
+    };
+
+    Particle.prototype.draw = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.size += this.growth;
+
+        if(this.x<0){
+            delete particles[this.id];
+        }
+        if(this.x>oCanvas.width){
+            delete particles[this.id];
+        }
+        if(this.y<0){
+            delete particles[this.id];
+        }
+        if(this.y>oCanvas.height){
+            delete particles[this.id];
+        }
+        cxt.fillStyle = this.color;
+        cxt.beginPath();
+        cxt.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        cxt.fill();
+    };
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        cxt.fillStyle = '#222222';
+        cxt.fillRect(0, 0, oCanvas.width, oCanvas.height);
+
+        new Particle();
+
+        for (var i in particles) {
+            particles[i].draw();
+        }
+    };
+    requestAnimationFrame(animate);
+};
+
+
+function getRandomColor() {
+    return '#' + (Math.random() * 0xffffff << 0).toString(16);
+};
+</script>
