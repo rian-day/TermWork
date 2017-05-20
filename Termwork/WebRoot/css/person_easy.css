@@ -1,0 +1,58 @@
+#content{
+	max-width: 1300px;
+	margin: auto;
+	background: #fff;
+	padding: 80px 20px;
+}
+#content *{
+	margin: 20px 0px;
+}
+#content #user-head{
+	height: 200px;
+	width: 200px;
+	margin: auto;
+	background: #eee;
+}
+#content #user-info{
+	width: 100%;
+	text-align: center;
+}
+#content #user-info #kinds-box{
+	width: 300px;
+	margin: auto;
+	height: 100px;
+	text-align: center;
+}
+#content #user-info #kinds-box #kind{
+	float: left;
+	margin: 10px;
+}
+#content #items{
+	width: 100%;
+	height: 200px;
+	background: #eee;
+}
+#content #items #easy-name{
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	font-size: 20px;
+	padding: 0 30px;
+}
+#content #items #easy-name span{
+	padding-left: 30px;
+}
+#content #items #easy-content{
+	width: 100px;
+	height: 200px;
+	padding: 20px;
+}
+#content #items #easy-foot ul li{
+	float: right;
+	font-size: 15px;
+	padding: 0 30px;
+}
+
+#content #items #easy-foot ul li:first-child{
+	float: left;
+}

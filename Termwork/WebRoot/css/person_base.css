@@ -1,0 +1,67 @@
+		*{
+			padding: 0px;
+			margin: 0px;
+			border: 0px;
+		}
+		ul,ol{
+			list-style: none;
+			margin: 0px;
+		}
+		body{
+			background: #fafafa;
+		}
+		img{
+			width: 100%;
+		}
+		*:after,*:before{
+			clear: both;
+			content: "";
+			display: block;
+		}
+		#header{
+			text-align: center;
+			margin-bottom: 30px;
+			background: white;
+			border-style: solid;
+			border-width: 0px 0px 2px 0px;
+			border-color: #eee;
+			width: 100%;
+		}
+		#header #daohang{
+			margin: auto;
+			height: 70px;
+			max-width: 1100px;
+		}
+		#header #logo{
+			width: 300px;
+			height: 70px;
+			line-height: 70px;
+			float: left;
+		}
+		#header ul{
+			float: left;
+			position: relative;
+			top: 2px;
+		}
+		#header li{
+			font-size: 20px;
+			float: left;
+			height: 70px;
+			line-height: 70px;
+			padding: 0 20px;
+		}
+		#header li:hover{
+			border-style: solid;
+			border-bottom-width: 2px;
+			border-color: #ccc;
+		}
+		#header #search{
+			float: right;
+			line-height: 70px;
+			height: 70px;
+			margin-right: 30px;
+		}
+		#header #search span{
+			font-size: 20px;
+		}
+		

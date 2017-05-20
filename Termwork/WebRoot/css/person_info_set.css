@@ -1,0 +1,47 @@
+.body1{
+	padding-top: 80px;
+}
+input{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #eee;
+}
+textarea{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ccc;
+	width: 100%;
+	border-radius: 5px;
+	height: 200px;
+}
+.body1 .content-box{
+	max-width: 1300px;
+	margin: auto;
+	height: 500px;
+}
+.body1 .content-box .box-left{
+	width: 25%;
+	float: left;
+	background: #fff;
+	padding: 20px 0;
+	height: 100%;
+}
+.body1 .content-box .box-left #tag-box{
+	width: 100%;
+	margin-top: 20px;
+	height:200px;
+	background: #fff;
+}
+.body1 .content-box .box-right{
+	width: 75%;
+	float: right;
+	background: #fff;
+	padding: 30px;
+	height: 100%;
+}
+.body1 .content-box .box-right .items{
+	margin-top: 30px;
+}
+.body1 .content-box .box-right #items-end input{
+	float: right;
+}

@@ -1,0 +1,70 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+body{
+	background: url("../img/background/bg4.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#view{
+	opacity: 0.5;
+	height: 500px;
+	width: 800px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -350px;
+	margin-left: -400px;
+	transition: 2s;
+}
+#view #box-top{
+	width: 50%;
+	height: 100px;
+}
+#view #box-top .item{
+	float: left;
+	width: 50%;
+	border-style: solid;
+	border-width: 0 1px;
+	border-color: #eee;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-size: 20px;
+	opacity: 0.5;
+	background: #fafafa;
+}
+#view #box-top #register{
+	opacity: 1;
+}
+#view #box-left{
+	width: 400px;
+	height: 300px;
+	float: left;
+	text-align: center;
+	position: relative;
+	background: #fff;
+}
+#view #box-left form{
+	margin: 0 20px;
+	position: absolute;
+	top: 20%;
+}
+#view #box-left form .input-group{
+	margin: 20px 0px;
+}
+#view #box-left #in{
+	width: 100%;
+}
+#view #box-right{
+	float: left;
+	height: 300px;
+	width: 400px;
+	background: #fff;
+	text-align: center;
+}
+#view #box-right img{
+	height: 100%;
+}

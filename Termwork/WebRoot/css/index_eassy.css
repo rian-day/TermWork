@@ -1,0 +1,124 @@
+#content{
+	max-width: 1400px;
+	min-width: 1300px;
+	margin: auto;
+	padding: 20px 40px;
+	padding-top: 80px;
+}
+#content #box-top{
+	width: 100%;
+	height: 50px;
+}
+#content .items *:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#content .items{
+	margin: 15px;
+}
+#content #box-left{
+	width: 800px;
+	float: left;
+}
+#content #box-left #lunbo{
+	width: 100%;
+}
+#content #box-left #lunbo img{
+	height: 300px;
+}
+#content #box-left #nav{
+	height: 100px;
+	overflow: hidden;
+	cursor: pointer;
+}
+/*第一个版本*/
+#content #box-left #nav #public{
+	width:100%;
+	height: 100px;
+	line-height: 100px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	transition: 1s;
+	background: #eee;
+}
+#content #box-left #nav #person{
+	width: 100%;
+	height: 0px;
+	transition: 1s;
+	font-size: 0px;
+	font-weight: bold;
+	text-align: center;
+	background: #ddd;
+}
+/*第二个版本*/
+
+#content #box-left #eassy-box{
+	background: #fff;
+}
+#content #box-left #eassy-box #eassy{
+	width: 100%;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-color: #eee;
+}
+#content #box-left #eassy-box #person-info{
+	float: left;
+	text-align: center;
+	width: 20%;
+}
+#content #box-left #eassy-box #person-info #person-head{
+	margin: auto;
+	width: 80px;
+	height: 80px;
+	background: #ccc;
+	border-radius: 50%;
+}
+#content #box-left #eassy-box #person-content{
+	float: left;
+	width: 80%;
+}
+#content #box-left #eassy-box #eassy #eassy-name{
+	font-size: 20px;
+}
+#content #box-left #eassy-box #eassy #eassy-content{
+	padding: 30px;
+}
+#content #box-left #eassy-box #eassy #eassy-foot li{
+	float: right;
+	font-size: 15px;
+	padding: 5px 20px;
+}
+#content #box-left #eassy-box #eassy #eassy-foot li:first-child{
+	float: left;
+}
+#content #box-right{
+	float: right;
+	width: 400px;
+}
+#content #box-right #type-box{
+	width: 100%;
+	height: 300px;
+}
+#content #box-right #type-box #type{
+	text-align: center;
+	float: left;
+	width: 50%;
+	padding: 30px;
+	font-size: 30px;
+	border-style: dashed;
+	border-bottom-width: 1px;
+	border-color: #ddd;
+}
+#content #box-right #person-box{
+	width: 100%;
+}
+#content #box-right #person-box #person-rec{
+	width: 100%;
+	padding: 20px;
+	background: #fff;
+}
+#content #box-right #person-box #person-name{
+	text-align: center;
+}

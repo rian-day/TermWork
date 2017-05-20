@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <servlet-name>Myservlet</servlet-name>
+    <servlet-class>cn.hyh.Myservlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginCheck</servlet-name>
+    <servlet-class>cn.hyh.LoginCheck</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Ajax_test</servlet-name>
+    <servlet-class>cn.hyh.Ajax_test</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>Myservlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Ajax_test</servlet-name>
+    <url-pattern>/abc</url-pattern>
+  </servlet-mapping>
+
+	
+	<jsp-config>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+	<taglib-location>/WEB-INF/fmt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/fmt-rt</taglib-uri>
+	<taglib-location>/WEB-INF/fmt-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+	<taglib-location>/WEB-INF/c.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/core-rt</taglib-uri>
+	<taglib-location>/WEB-INF/c-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+	<taglib-location>/WEB-INF/sql.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/sql-rt</taglib-uri>
+	<taglib-location>/WEB-INF/sql-rt.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+	<taglib-location>/WEB-INF/x.tld</taglib-location>
+	</taglib>
+	<taglib>
+	<taglib-uri>http://java.sun.com/jstl/x-rt</taglib-uri>
+	<taglib-location>/WEB-INF/x-rt.tld</taglib-location>
+	</taglib>
+	</jsp-config>
+	
+</web-app>

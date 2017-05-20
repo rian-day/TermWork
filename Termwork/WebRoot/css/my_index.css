@@ -1,0 +1,118 @@
+
+		/*-----------一条华丽丽的分隔线----------*/
+		#body1{
+			max-width: 1000px;
+			margin: auto;
+		}
+		#person_info{
+			background: #fff;
+			text-align: center;
+			padding: 30px;
+		}
+		span{
+			font-size: 40px; 
+			color: #666;
+			cursor: pointer;
+		}
+		#body1 #input-box{
+			width: 100%;
+			height: 300px;
+			margin-top: 30px;
+		}
+		#body1 #input-box textarea{
+			width: 90%;
+			height: 200px;
+			border-style: solid;
+			border-color: #eee;
+			border-width: 2px;
+		}
+		#body1 #input-box #box-bottom{
+			width: 90%;
+			margin: auto;
+			padding: 10px 0;
+		}
+		#body1 #input-box button{
+			float: right;
+		}
+		#col{
+			padding: 30px;
+			text-align: center;
+			font-size: 20px;
+		}
+		#col a{
+			text-decoration: none;
+			color: black;
+		}
+		#col:hover{
+			background: #ccc;
+		}
+		.mynav1{
+			width: 60%;
+			margin: auto;
+			padding: 20px;
+		}
+		#search{
+			font-size: 15px;
+		}
+		.goods{
+			width: 100%;
+			background: white;
+			margin-top: 30px;
+			padding: 20px;
+		}
+		.goods #user-head{
+			margin-right: 10px;
+			height: 80px;
+			max-width: 100px;
+			background: #ccc;
+		}
+		.goods #bottom ul li{
+			float: right;
+			padding-top: 20px;
+			padding-right: 30px;
+		}
+		.goods #bottom ul li:first-child{
+			float: left;
+		}
+		.goods #bottom ul li span{
+			font-size: 15px;
+		}
+		.goods #details{
+			width: 100%;
+			height: 50px;
+		}
+		.goods #details .btn-group{
+			float: right;
+			font-size: 20px;
+			height: 50px;
+			line-height: 50px;
+			cursor: pointer;
+		}
+		.goods #content{
+			width: 100%;
+			height: 400px;
+		}
+		#nav #items{
+			width: 100%;
+			padding: 7px;
+			height: 50px;
+			background: #eee;
+			border-style: solid;
+			border-width: 0 0 2px 0;
+			border-color: #fafafa;
+		}
+		/*#nav li:first-child{
+			padding: 10px;
+			height: 70px;
+		}
+		#nav li:last-child{
+			height: 30px;
+			background: #ccc;
+		}*/
+		#nav li .dropdown{
+			float: right;
+		}
+		/*#nav li .dropdown ul li{
+			padding: 0px;
+			line-height: 10px;
+		}*/
