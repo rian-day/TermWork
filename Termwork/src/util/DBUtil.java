@@ -19,21 +19,23 @@ public class DBUtil {
 	
 	public DBUtil(){
 		String[] str = readConfigFile();
+		
 		try {
 			Class.forName(str[0]);
 			conn = DriverManager.getConnection(str[1],str[2], str[3]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
-	public static void main(String[] args){
+//	public static void main(String[] args){
 //	DBUtil dbc = new DBUtil();
 //	String[] str = dbc.readConfigFile();
 //	System.out.println(str[0]);
-//	String condition = "username='e' and password='e'";
+//	String condition = "name='heyuheng'";
 //	boolean b = dbc.CheckedLogin("user", condition);
 //	System.out.println(b);
-	}
+//	}
 
 	private  String[] readConfigFile() {
 		String[] str = new String[4];
@@ -141,6 +143,7 @@ public class DBUtil {
 	public boolean CheckedLogin(String table,String condition) {
 		boolean flag = false;
 		try {
+			
 			String sql = "select * from "+table+" where "+condition;
 			prestmt = conn.prepareStatement(sql);
 			rs = prestmt.executeQuery();

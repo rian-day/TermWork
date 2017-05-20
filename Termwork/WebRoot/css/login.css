@@ -40,7 +40,9 @@
 }
 .content .view .input-box input{
 	margin: 30px 0;
-
+	
+	text-align: center;
+	
 	border-radius: 20px;
 }
 .content .view .input-box button{

@@ -1,69 +1,92 @@
-*{
-    margin: 0;
-    padding: 0;
-    border:0;
-}
-body{
-    background: #fafafa;
-}
-ul,ol{
-    list-style: none;
-}
-p{
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-indent: 2em;
-}
-a{
-    text-decoration: none;
-
-    color: black;
-}
-a:hover{
-    text-decoration: none;
-    color: #777; 
-}
-img{
-    width: 100%;
-}
-#tag{
-    background: #eee;
-    padding: 5px 10px;
-    line-height: 50px;
-    font-size: 13px;
-    border-radius: 20px;
-    text-align: center;
-}
-#tag-follow{
-    font-size: 13px;
-    border-width: 1px;
-    border-radius: 20px;
-    border-style: solid;
-    border-top-color: #aaa;
-    border-bottom-color: #eee;
-    border-left-color: #ccc;
-    border-right-color: #ccc;
-    padding: 5px 15px;
-    line-height: 50px;
-    color: #338dba;
-    cursor: pointer;
-}
-#tag-follow:hover{
-    border-color: #eee #ccc #aaa #ccc;
-}
- /*  -------一条华丽丽的分隔线-----------*/
-        #content{
-            padding-top:80px;
+        *{
+            padding: 0px;
+            border: 0px;
+            margin: 0px;
         }
+        body{
+            background: #F2F2F3;
+            transition: 1s;
+        }
+        #header span{
+            font-size: 40px;
+            color: #555;
+        }
+        #header img{
+            width: 100%;
+        }
+        .carousel-indicators{
+            z-index: 3;
+        }
+        ul ol{
+            list-style: none;
+            text-decoration: none;
+        }
+        li{
+            list-style: none;
+        }
+        #tip{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            top: -50px;
+            background: red;
+            z-index: 200;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            animation: tip 3s;
+        }
+        /*---------Ò»Ìõ»ªÀöÀöµÄ·Ö¸ôÏß----------*/
+        /*µÚÒ»¸ö°æ±¾*/
+        /*#header{
+            width: 100%;
+            background: #fff;
+        }
+        #header .container-fluid{
+            max-width: 100%;
+        }
+        #header .container-fluid .row{
+            text-align: left;
+        }
+        #header .container-fluid .row div{
+            height: 150px;
+            padding: 60px;
+        }
+        #header .container-fluid .row h1{
+            margin: 0px;
+        }
+        #header .container-fluid .row img{
+            width: 40px;
+        }
+        #header .container-fluid .row #nav-first{
+            text-align: center;
+            background: #eee;
+        }
+        #header .container-fluid .row #nav-second{
+            font-size: 20px;
+            color:#555;
+            text-align: center;
+            background: #ddd;
+        }
+        #header .container-fluid .row #nav-third{
+            text-align: center;
+            background: #ccc;
+        }*/
+        /*µÚ¶þ¸ö°æ±¾*/
         #header{
             width: 100%;
+            transition: 1s;
             height: 70px;
-            background: #fff;
-            border-style: solid;
-            border-bottom-width: 1px;
-            border-color: #ccc;
-            position: fixed;
-            z-index: 10;
+            background: #F2F2F3;
+            border-style:solid;
+            border-bottom-width:1px;
+            border-color:#ccc;
+            z-index: 11;
+            position:fixed;
+            top: -80px;
+
         }
         #header #box-left{
             float: left;
@@ -72,6 +95,8 @@ img{
             border-style: solid;
             border-right-width: 1px;
             border-color: #ccc;
+            position: relative;
+            z-index: 101;
         }
         #header #box-left span{
             padding-left: 7px;
@@ -86,11 +111,69 @@ img{
         #header #box-left #item1{
             cursor: pointer;
         }
+        #header #box-right{
+            float: left;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            padding-left:115px;
+            background: #fafafa;
+            opacity: 0;
+            transition: 0.5s;
+            display: none;
+        }
+        #header #box-right #text{
+            width: 100%;
+            height: 100%;
+            background: #fafafa;
+            font-size: 15px;
+            padding: 20px;
+        }
+        #header #box-right #do{
+            position: absolute;
+            right: 0;
+            height: 100%;
+            width: 100px;
+            line-height: 70px;
+            text-align: center;
+            font-size: 20px;
+        }
+        #header #box-right .search-items{
+            position: absolute;
+            top: 70px;
+
+            background: rgba(225,225,225,0.2);
+            width: 85%;
+        }
+        #header #box-right .search-items .items{
+            width: 100%;
+            color: #fff;
+            padding: 10px;
+            font-size: 15px;
+            height: 50px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        #header #box-right .search-items .items:hover{
+            background: #222;
+        }
+        #header span{
+            padding-left: 7px;
+            font-size: 15px;
+        }
         #header #item1{
+            height: 70px;
+            line-height: 70px;
+            padding-left:15px;
+            float: left;
+        }
+        #header #item4{
             height: 70px;
             line-height: 70px;
             padding-left: 15px;
             float: left;
+            cursor: pointer;
         }
         #header #item2{
             padding: 0 15px;
@@ -101,6 +184,7 @@ img{
         #header #item2 img{
             margin: 0 10px;
             width: 20px;
+            cursor: pointer;
         }
         #header #item3{
             background: #42ab9e;
@@ -110,10 +194,6 @@ img{
             float: right;
             color: #fff;
             font-weight: bold;
-        }
-        #header span{
-            padding-left: 7px;
-            font-size: 15px;
         }
         #header #logo{
             transition: 0s;
@@ -126,11 +206,101 @@ img{
             transition: 1s;
         }
         #header #logo img{
-            width: 40px;
-            height: 40px;
+            height: 50px;
+            width: 50px;
+            transition: 0;
         }
         
-        /*左边扩展栏*/
+        /*¾²Ì¬herder*/
+        #header-static{
+            height: 150px;
+            transition: 1s;
+            background: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            border-style: solid;
+            border-bottom-width: 1px;
+            border-color: #ccc;
+        }
+        #header-static #logo{
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -50px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 25px;
+        }
+        #header-static #menu-box{
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        #header-static #menu-box img{
+            width: 100%;
+        }
+        #header-static #login-box{
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            line-height: 100px;
+            margin-top: -50px;
+            font-size: 20px;
+        }
+        #login-box a{
+            text-decoration: none;
+            color: #000;
+        }
+        #login-box img{
+            height: 50px;
+            width: 50px;
+            margin-left: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #777;
+        }
+        #header-static #search-box{
+            width: 300px;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -150px;
+            overflow: hidden;
+        }
+        #header-static #search-box #search{
+            width: 300px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+        }
+        #header-static #search-box input{
+            width: 85%;
+            float: left;
+            opacity: 0;
+        }
+        #header-static #search-box span{
+            float: left;
+            font-size: 20px;
+            padding: 6px 0;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        /*×ó±ßÀ©Õ¹À¸*/
         #header-left{
             opacity: 0.7;
             position: fixed;
@@ -139,7 +309,8 @@ img{
             width: 300px;
             height: 100vh;
             background: #fff;
-            transition: 3s;
+            transition: 2s;
+            top:0;
         }
         #header-left #head{
             font-size: 20px;
@@ -160,7 +331,7 @@ img{
             color: #bbb;
         }
         #header-left a{
-            text-decoration: underline;
+            text-decoration: none;
             color: #bbb;
         }
         #header-left #head #text span{
@@ -182,6 +353,10 @@ img{
             width: 100%;
             height: 70px;
             line-height: 70px;
+            transition: 0.5s;
+        }
+        #header-left #items:hover{
+            background: #ccc;
         }
         #header-left #items span{
             padding-right: 30px;
@@ -209,7 +384,23 @@ img{
             line-height: 70px;
             cursor: pointer;
         }
-        /*遮罩层*/
+        /*---------------------------ÊÖ»ú°æ----------------------------*/
+        #header #item4-m{
+            height: 70px;
+            line-height: 70px;
+            padding-right:25px;
+            float: right;
+        }
+        #header #item4-m span{
+            font-size: 20px;
+        }
+        #header #item2-m{
+            display: none;
+        }
+        #header #item3-m{
+            display: none;
+        }
+        /*--------------------------ÕÚÕÖ²ã--------------------------*/
         #mask-top{
             position: fixed;
             top: 0px;
@@ -233,13 +424,13 @@ img{
         #mask-main{
             position: fixed;
             top: 0px;
-            height: 100vh;
             width: 100%;
-            background: #ccc;
-            opacity: 0.7;
-            display: none;
+            z-index: 11;
+            height: 0vh;
+            display: block;
+            cursor: pointer;
         }
-        /*遮罩层动画*/
+        /*ÕÚÕÖ²ã¶¯»­*/
         @keyframes mask-show{
             0%{
                 height: 0px;
@@ -268,6 +459,102 @@ img{
                 height: 0px;
             }
         }
-     /*   ----------一条华丽丽的分隔线-----------*/}
-}
-}
+        /*-------Ò»Ìõ»ªÀöÀöµÄ·Ö¸îÏß----------*/
+        
+        .footer{
+            padding: 30px;
+            width: 100%;
+            /*background: #2c3e50;*/
+            background: #fff;
+        }
+        .footer #top{
+            padding: 50px;
+            background: #fff;
+            margin: auto;
+            max-width: 1300px;
+            border-style: solid;
+            border-top-width: 2px;
+            border-bottom-width: 2px;
+            border-color: #ccc;
+        }
+        .footer #top #logo{
+            width: 200px;
+        }
+        .footer #top:after{
+            clear: both;
+            content: "";
+            display: block;
+        }
+        .footer #top img{
+            width: 40px;
+        }
+        .footer #top li{
+            list-style: none;
+            float: right;
+            padding-left: 20px;
+        }
+        .footer #top li:first-child{
+            float: left;
+        }
+        .footer #top #title{
+            font-size: 30px;
+            margin-right: 70px;
+        }
+        .footer #ul-group-box{
+            max-width: 1300px;
+        }
+        .footer #ul-group-box .row{
+            text-align: left;
+        }
+        @keyframes box-right{
+            0%{
+                left: 0;
+            }
+            100%{
+                left: 500px;
+            }
+        }
+        @keyframes search{
+            0%{
+                left: 50%;
+            }
+            100%{
+                left: 0;
+            }
+        }
+        @keyframes search-input{
+            0%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1.0;
+            }
+        }
+        @keyframes mask-main{
+            0%{
+                opacity: 0;
+            }
+            10%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1.0;
+            }
+        }
+        @keyframes tip{
+            0%{
+                top: -50px;
+            }
+            10%{
+                top:0px;
+            }
+            90%{
+                top:0px;
+            }
+            100%{
+                top:-50px;
+            }
+        }

@@ -1,5 +1,8 @@
 
 		/*-----------一条华丽丽的分隔线----------*/
+		.body{
+			padding-top: 160px;
+		}
 		#body1{
 			max-width: 1000px;
 			margin: auto;
@@ -8,6 +11,14 @@
 			background: #fff;
 			text-align: center;
 			padding: 30px;
+		}
+		#person_info #head-box{
+			height: 100px;
+			width: 100px;
+			overflow: hidden;
+		}
+		#person_info #head-box img{
+			width: 100%;
 		}
 		span{
 			font-size: 40px; 
@@ -92,14 +103,20 @@
 			width: 100%;
 			height: 400px;
 		}
-		#nav #items{
-			width: 100%;
-			padding: 7px;
+		#nav li{
+			margin: auto;
 			height: 50px;
+			width: 50px;
+			border-radius: 50%;
 			background: #eee;
-			border-style: solid;
-			border-width: 0 0 2px 0;
-			border-color: #fafafa;
+			cursor: pointer;
+
+			text-align: center;
+			transition: 0.5s;
+		}
+		#nav li:hover{
+			height: 100px;
+			width: 100px;
 		}
 		/*#nav li:first-child{
 			padding: 10px;
@@ -109,9 +126,6 @@
 			height: 30px;
 			background: #ccc;
 		}*/
-		#nav li .dropdown{
-			float: right;
-		}
 		/*#nav li .dropdown ul li{
 			padding: 0px;
 			line-height: 10px;

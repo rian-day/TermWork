@@ -13,7 +13,7 @@
 			background-color:#222222;
 		}
 	
-	</style>
+	</style> 
 	<canvas id="canvasParticle">Canvas is not supported in your brower.</canvas>
 </head>
 </head>
@@ -36,7 +36,38 @@
 </html>	
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript">
-	
+	function login(){
+		var username=$("#username").val();
+		var password=$("#password").val();
+		console.log(username);
+		console.log(password);
+		$.ajax({
+			url: 'login.in',
+			type: 'POST',
+			data: {
+				username: username,
+				password: password
+			},
+			success: function(json){
+				var data =JSON.parse(json);
+				if(data.username==username){
+					$(".view").html("<a href='my_index.jsp'><h1>Welcome:"+data.username+"</h1></a>");
+				}else{
+					$(".view").html("密码或用户名错误");
+				}
+			}
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+	}
 	window.onload = function() {
     var oCanvas = document.getElementById('canvasParticle');
     var cxt = null;
@@ -69,16 +100,14 @@
         this.y += this.vy;
         this.size += this.growth;
 
-        if(this.x<0){
+        if (this.x < 0) {
             delete particles[this.id];
         }
-        if(this.x>oCanvas.width){
+		if (this.x > oCanvas.width) {
             delete particles[this.id];
-        }
-        if(this.y<0){
+        }if (this.y < 0) {
             delete particles[this.id];
-        }
-        if(this.y>oCanvas.height){
+        }if ( this.y > oCanvas.height) {
             delete particles[this.id];
         }
         cxt.fillStyle = this.color;

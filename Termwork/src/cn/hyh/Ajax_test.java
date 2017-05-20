@@ -1,5 +1,6 @@
 package cn.hyh;
 
+import java.io.Console;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -49,10 +50,12 @@ public class Ajax_test extends HttpServlet {
 		String password=request.getParameter("password");
 		Map map = new HashMap();
 
-		map.put("username","json");
+		map.put("username","heyuheng");
 		map.put("password", "何宇亨最帅");
+		System.out.println(map);
 		JSONObject itemjson=JSONObject.parseObject(JSON.toJSONString(map));
-		response.getWriter().print(itemjson);
+		System.out.println(itemjson);
+		response.getWriter().println(itemjson);
 	}
 
 }

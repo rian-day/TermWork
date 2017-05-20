@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#ajax").click(function(event) {
 			/* Act on the event */
 			$.ajax({
-				url: 'abc',
+				url: 'login.do',
 				type: 'POST',
 				data: {username: 'HEYUHENG',password:'HYH123'},
 				success : function(data){

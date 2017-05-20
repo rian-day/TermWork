@@ -7,24 +7,29 @@
     <servlet-name>Myservlet</servlet-name>
     <servlet-class>cn.hyh.Myservlet</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>LoginCheck</servlet-name>
-    <servlet-class>cn.hyh.LoginCheck</servlet-class>
-  </servlet>
-  <servlet>
+  <!-- <servlet>
     <servlet-name>Ajax_test</servlet-name>
     <servlet-class>cn.hyh.Ajax_test</servlet-class>
+  </servlet>-->
+  <servlet>
+    <servlet-name>InfoIn</servlet-name>
+    <servlet-class>cn.hyh.InfoIn</servlet-class>
   </servlet>
 
 
 
-  <servlet-mapping>
+
+  <!-- <servlet-mapping>
     <servlet-name>Myservlet</servlet-name>
     <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
+  </servlet-mapping> -->
+  <!--  <servlet-mapping>
     <servlet-name>Ajax_test</servlet-name>
-    <url-pattern>/abc</url-pattern>
+    <url-pattern>*.in</url-pattern>
+  </servlet-mapping>-->
+  <servlet-mapping>
+    <servlet-name>InfoIn</servlet-name>
+    <url-pattern>*.in</url-pattern>
   </servlet-mapping>
 
 	
