@@ -175,6 +175,9 @@
             float: left;
             cursor: pointer;
         }
+        #header #item4 span{
+        	line-height:70px;
+        }
         #header #item2{
             padding: 0 15px;
             height: 70px;
@@ -197,7 +200,7 @@
         }
         #header #logo{
             transition: 0s;
-            line-height: 70px;
+            padding:10px;
             font-size: 25px;
             font-weight: bold;
             position: absolute;

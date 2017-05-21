@@ -56,8 +56,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			</div>
 		</div>
 		<div id="item4"><span class="glyphicon glyphicon-search"></span></div>
-		<a href="login.html" th:if="${session.username == null}" th:href="@{/user/login}"><div id="item3">REGISTER/LOG IN</div></a>
-		<a href="login.html" th:if="${session.username != null}" th:href="@{#}"><div id="item3" th:text="${session.username}"></div></a>
+    <c:choose>
+    	<c:when test="${sessionScope.username==null }"><a href="page/login.html"><div id="item3">REGISTER/LOG IN</div></a></c:when>
+    	<c:when test="${sessionScope.username!=null }"><a href="page/my_index.jsp"><div id="item3">Hi:<c:out value="${sessionScope.username }"></c:out></div></a></c:when>
+    </c:choose> 
 		<div id="logo">
 			<img src="../img/logo/logo.png">
 		</div>

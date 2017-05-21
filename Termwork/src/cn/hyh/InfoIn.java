@@ -3,7 +3,9 @@ package cn.hyh;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,6 @@ public class InfoIn extends HttpServlet {
 		
 		String path=request.getServletPath();
 		String real_path=path.replace("page", "").replace(".in","").replace("/","");
-		
 		switch(real_path){
 		case "login":
 			String username=request.getParameter("username");
@@ -44,6 +45,14 @@ public class InfoIn extends HttpServlet {
 				response.getWriter().println(itemjson);
 			}
 			break;
+		case "search":
+			String text=request.getParameter("text");
+			String tableName="eassy";
+			String []field={"content","username","eassytitle","time","good","type","updatetime"};
+			String condition="eassytitle like '%"+text+"%'";
+			List result=myutil.search(tableName, field, condition);
+			String json=JSON.toJSONString(result);
+			response.getWriter().println(json);
 		}
 	}
 
