@@ -1,0 +1,56 @@
+.content{
+	max-width: 1400px;
+	min-width: 800px;
+
+	margin: auto;
+
+	padding-top: 150px;
+}
+.content h1{
+	text-align: center;
+}
+.content tr{
+	height: 60px;
+	line-height: 60px;
+}
+.content tr td:last-child{
+	width: 10%;
+}
+.content tr td:first-child{
+	width: 70%;
+}
+.content #username{
+	padding-left: 40px;
+
+	font-size: 20px;
+	font-weight: bold;
+}
+.item-box .items{
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+}
+.item-box .items span{
+	float: left;
+}
+.item-box .items input{
+	float: right;
+
+	height: 60px;
+
+	margin: 0 10px;
+}
+#myModal2 .modal-dialog{
+	width: 400px;
+	margin: 20% auto;
+}
+#myModal2 .modal-footer{
+	text-align: center;
+}
+#myModal3 .modal-body{
+	text-align: center;
+}
+#myModal3 .modal-body span{
+	font-size: 20px;
+	font-weight: bold;
+}

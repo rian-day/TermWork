@@ -47,12 +47,18 @@ public class MyUtil {
 		}
 		return user;
 	}
-//	public int get_id(String username){
-//		String sql="name='"+username+"'";
-//		String id=db.getData("user", "id", sql);
-//		int out=su.stringToInteger(id);
-//		return out;
-//	}
+	public String registerUser(String username ,String password ,String email ,HttpServletRequest request, HttpServletResponse response){
+		if(db.CheckedLogin("user", "name='"+username+"';")){
+			return "用户名已存在";
+		}else{
+			HttpSession session=request.getSession();
+			String []field={"name","password","email"};
+			String []value={username,password,email};
+			db.insertData("user", field, value);
+			session.setAttribute("username", username);
+			return "注册成功";
+		}
+	}
 	
 	public int get_id_byemail(String email){
 		String sql="email='"+email+"'";
@@ -62,24 +68,23 @@ public class MyUtil {
 		return out;
 	}
 
-//	public  Vector<String[]> search(String tableName,String []field,String condition){
-//		Vector<String[]>vector=null;
-//		vector=db.getData(tableName, field, condition);
-//		return vector;
-//	}
 	public List search(String tableName,String []field,String condition){
 		List list=null;
 		list=db.getData(tableName, field, condition);
 		return list;
 	}
-//	public static void main(String[] args) {
-//		MyUtil myutil=new MyUtil();
-//		String text="G";
-//		String tableName="eassy";
-//		String []field={"content","username","eassytitle","time","good","type","updatetime"};
-//		String condition="eassytitle like '%"+text+"%'";
-//		List result=myutil.search(tableName, field, condition);
-//		String json=JSON.toJSONString(result);
-//		System.out.println(json);
-//	}
+	
+	public List getuser(){
+		List list=null;
+		String []field={"name","power"};
+		list=db.getData("user", field, "");
+		return list;
+	}
+	public boolean changepower(String username,String powername){
+		String []field={"power"};
+		String []value={powername};
+		String condition="name='"+username+"'";
+		db.modifyData("user", field, value, condition);
+		return true;
+	}
 }

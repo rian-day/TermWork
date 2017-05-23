@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/power.css">
+</head>
+<body>
+	<div class="content">
+		<h1>权限管理表<br><small>Made By HYH</small></h1>
+		<table class="table table-hover" id="table">
+			<tr class="active" id="title">
+				<td id="username">用户名:</td>
+				<td id="power"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">地位</button></td>
+				<td id="control"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">操作</button></td>
+			</tr>
+			<!-- <tr>
+				<button class='btn btn-success' data-toggle='modal' data-target='#myModal'>修改</button>
+			</tr> -->
+		</table>
+	</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">权限:</h4>
+      </div>
+      <div class="modal-body">
+        <div class="item-box" id="PayMethod">
+        	<div class="items" id="master"><span>总统</span> <input name="payMethod" type="radio" value="总统"></div>
+        	<div class="items" id="controller"><span>军阀</span> <input name="payMethod" type="radio" value="军阀"></div>
+        	<div class="items" id="people"><span>平民</span> <input name="payMethod" type="radio" value="平民"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+        <button type="button" class="btn btn-primary" onclick="commit()">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">删除用户:</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" onclick="deleteUser()">删除</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+  		<div class="modal-body">
+  			<span>...</span>
+      	</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/power.js"></script>

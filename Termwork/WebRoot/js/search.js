@@ -10,10 +10,11 @@ function search(){
 		//contentType: "application/x-www-form-urlencoded; charset=utf-8",   
 		success: function(json){
 			$("#body1").html("");
-			alert(json);
 			$.each(JSON.parse(json),function(index, ele){
+					var eassyImg=ele.imgres.split("|");
 					$("#body1").prepend(
 							"<div id='essay_box' class='col-md-6 col-lg-4 col-xs-6'>" +
+							"<img src='"+eassyImg[0]+"'>"+
 							"<h1>"+ele.eassytitle+"</h1>" +
 							"<p>"+ele.content+"</p> " +
 							"<div id='link_box'>" +

@@ -47,11 +47,4 @@ public class WebFilter extends HttpServlet implements Filter {
 	}
 
 	
-//	@Override
-//	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("何宇亨");
-//	}
-//	@Override
-//	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//	}
 }
