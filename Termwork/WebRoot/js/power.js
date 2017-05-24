@@ -1,5 +1,7 @@
-var username=new Array([10000]);;
+var username=new Array([10000]);
+var powername=new Array([10000]);
 var count=0;
+var countpower=0;
 function commit(){
 	var payMethod=$('#PayMethod input[name="payMethod"]:checked ').val();
 	var username=$("#myModal").attr('name');
@@ -12,7 +14,6 @@ function commit(){
 		},
 		success : function(json){
 			var data =JSON.parse(json);
-			alert(data.result);
 			if(data.result=="complete"){
 				alert("修改成功");
 			}else{
@@ -43,6 +44,7 @@ function road(){
 		url: 'getuser.in',
 		type: 'POST',
 		success: function(json){
+			count=0;
 			$.each(JSON.parse(json),function(index, ele){
 				username[count]=ele.name;
 				switch (ele.power) {
@@ -93,10 +95,12 @@ function road(){
 }
 
 $(document).ready(function() {
+	//table
 	$.ajax({
 			url: 'getuser.in',
 			type: 'POST',
 			success: function(json){
+				count=0
 				$.each(JSON.parse(json),function(index, ele){
 					username[count]=ele.name;
 					switch (ele.power) {
@@ -144,5 +148,113 @@ $(document).ready(function() {
 	.always(function() {
 		console.log("complete");
 	});
+
+
+	//table2
+	$.ajax({
+			url: 'getpower.in',
+			type: 'POST',
+			success: function(json){
+				powercount=0;
+				$.each(JSON.parse(json),function(index, ele){
+					powername[countpower]=ele.power;
+					switch (ele.power) {
+						case "总统":
+							$("#table2").append("" +
+			"<tr class='danger'>" +
+				"<td id='username'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+ele.power+"</button></td>" +
+				"<td >" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"修改用户信息"+ele.changeuser+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除动态"+ele.deletedynamic+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除文章"+ele.deleteeassy+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除用户"+ele.deleteuser+"</button>" +
+				"</td>" +
+				"<td ><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2'>删除</button>" +
+					"<button class='btn btn-success' data-toggle='modal' data-target='#myModal4' onclick='assign2("+countpower+")'>修改</button></td>" +
+			"</tr>"
+			);
+							break;
+						case "军阀":
+							$("#table2").append("" +
+			"<tr class='info'>" +
+				"<td id='username'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+ele.power+"</button></td>" +
+				"<td >" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"修改用户信息"+ele.changeuser+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除动态"+ele.deletedynamic+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除文章"+ele.deleteeassy+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除用户"+ele.deleteuser+"</button>" +
+				"</td>" +
+				"<td ><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2'>删除</button>" +
+					"<button class='btn btn-success' data-toggle='modal' data-target='#myModal4' onclick='assign2("+countpower+")'>修改</button></td>" +
+		"</tr>"
+			);
+							break;
+						default:
+							$("#table2").append("" +
+			"<tr class='warning'>" +
+				"<td id='username'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+ele.power+"</button></td>" +
+				"<td >" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"修改用户信息"+ele.changeuser+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除动态"+ele.deletedynamic+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除文章"+ele.deleteeassy+"</button>" +
+				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除用户"+ele.deleteuser+"</button>" +
+				"</td>" +
+				"<td ><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2'>删除</button>" +
+					"<button class='btn btn-success' data-toggle='modal' data-target='#myModal4' onclick='assign2("+countpower+")'>修改</button></td>" +
+		"</tr>"
+			);
+							break;
+					}
+					countpower++;
+				});
+			}
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
 	
 });
+function assign2(count){
+	$("#myModal4").attr('name',powername[count]);
+} 
+function commit2(){
+	var power=$("#myModal4").attr('name');
+	var changeuser=$("#myModal4 #changeuser input").is(':checked');
+	var deletedynamic=$("#myModal4 #deletedynamic input").is(':checked');
+	var deleteeassy=$("#myModal4 #deleteeassy input").is(':checked');
+	var deleteuser=$("#myModal4 #deleteuser input").is(':checked');
+	$.ajax({
+		url: 'changepoweritems.in',
+		type: 'POST',
+		data: {
+			power:power,
+			changeuser: changeuser,
+			deletedynamic: deletedynamic,
+			deleteeassy: deleteeassy,
+			deleteuser: deleteuser
+		},
+		success : function(json){
+			var data =JSON.parse(json);
+			if(data.result=="complete"){
+				//alert("修改成功");
+			}else{
+				//alert("发生未知错误");
+			}
+		}
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+}

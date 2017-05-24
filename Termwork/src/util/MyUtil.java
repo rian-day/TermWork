@@ -87,4 +87,8 @@ public class MyUtil {
 		db.modifyData("user", field, value, condition);
 		return true;
 	}
+	public boolean changepoweritems(String []field,String []values,String condition){
+		db.modifyData("power", field, values, condition);
+		return true;
+	}
 }

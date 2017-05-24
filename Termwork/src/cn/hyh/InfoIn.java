@@ -86,6 +86,32 @@ public class InfoIn extends HttpServlet {
 					response.getWriter().println(itemjson);
 				}
 				break;
+			case "getpower":
+				String []fieldPower={"power","changeuser","deletedynamic","deleteuser","deleteeassy"};
+				List resultPower=myutil.search("power", fieldPower, "");
+				String jsonPower=JSON.toJSONString(resultPower);
+				response.getWriter().println(jsonPower);
+				break;
+			case "changepoweritems":
+				String usernamePowerItems=request.getParameter("power");
+				String changeuser=request.getParameter("changeuser");
+				String deletedynamic=request.getParameter("deletedynamic");
+				String deleteeassy=request.getParameter("deleteeassy");
+				String deleteuser=request.getParameter("deleteuser");
+				String []fieldPowerItems={"changeuser","deletedynamic","deleteeassy","deleteuser"};
+				String []values={changeuser,deletedynamic,deleteeassy,deleteuser};
+				for(int i=0;i<values.length;i++){
+					if(values[i].equals("true"))values[i]="1";
+					else values[i]="0";
+				}
+				String conditionPowerItems="power='"+usernamePowerItems+"'";
+				if(myutil.changepoweritems(fieldPowerItems, values, conditionPowerItems)){
+					Map map = new HashMap();
+					map.put("result","complete");			
+					JSONObject itemjson=JSONObject.parseObject(JSON.toJSONString(map));
+					response.getWriter().println(itemjson);
+				}
+				break;
 				
 				
 		}
