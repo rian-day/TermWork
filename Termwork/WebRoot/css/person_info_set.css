@@ -12,19 +12,31 @@ textarea{
 	border-color: #ccc;
 	width: 100%;
 	border-radius: 5px;
-	height: 200px;
+	height: 150px;
 }
 .body1 .content-box{
-	max-width: 1300px;
+	max-width: 1400px;
+
 	margin: auto;
-	height: 500px;
+
+	background: #fff;
+
+	border-radius: 20px;
+
+}
+.body1 .content-box:after{
+	content: "";
+	clear: both;
+	display: block;
 }
 .body1 .content-box .box-left{
-	width: 25%;
-	float: left;
-	background: #fff;
-	padding: 20px 0;
 	height: 100%;
+	width: 25%;
+
+	float: left;
+
+	padding: 20px 10px;
+
 }
 .body1 .content-box .box-left #tag-box{
 	width: 100%;
@@ -32,16 +44,21 @@ textarea{
 	height:200px;
 	background: #fff;
 }
+.body1 .content-box .box-left button{
+	margin: 20px 0;
+}
 .body1 .content-box .box-right{
 	width: 75%;
 	float: right;
-	background: #fff;
+
 	padding: 30px;
 	height: 100%;
 }
 .body1 .content-box .box-right .items{
 	margin-top: 30px;
 }
-.body1 .content-box .box-right #items-end input{
+.body1 .content-box .box-right #items-end button{
 	float: right;
+
+	margin:0 15px;
 }

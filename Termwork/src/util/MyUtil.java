@@ -91,4 +91,10 @@ public class MyUtil {
 		db.modifyData("power", field, values, condition);
 		return true;
 	}
+	public boolean writeEassy(String username,String time,String eassytitle,String content){
+		String []field={"username","time","eassytitle","content"};
+		String []value={username,time,eassytitle,content};
+		boolean result=db.insertData("eassy", field, value);
+		return result;
+	}
 }

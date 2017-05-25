@@ -22,40 +22,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" href="../css/person_index.css">
 </head>
 <body>
-      <!-- 遮罩层 -->
-    <div id="mask-top"></div>
-    <div id="mask-bottom"></div>
-    <div id="mask-main">
+     <!-- 遮罩层 -->
+  <!-- <div id="tip">wrong</div> -->
+  <div id="mask-top"></div>
+  <div id="mask-bottom"></div>
+  <div id="mask-main">
+    
+  </div>
+  <!-- 第二个版本 -->
+  <div id="header">
+    <div id="box-left">
+      <div id="item1">
+        <img src="img/img/index/nav.png"><span>MENU</span>
+      </div>
     </div>
+    <div id="box-right">
+      <input type="text" name="" placeholder="Search Someting" id="text"><button id="do" class="glyphicon glyphicon-search"></button>
+      <div class="search-items">
+        <ul>
+          <!-- 此处添加搜索列表 -->
+          
+          
+        </ul>
+      </div>
+    </div>
+    <div id="item4"><span class="glyphicon glyphicon-search"></span></div>
+    <c:choose>
+    	<c:when test="${sessionScope.username==null }"><a href="page/login.html"><div id="item3">REGISTER/LOG IN</div></a></c:when>
+    	<c:when test="${sessionScope.username!=null }"><a href="page/my_index.jsp"><div id="item3">Hi:<c:out value="${sessionScope.username }"></c:out></div></a></c:when>
+    </c:choose> 
+    <div id="logo">
+      <img src="img/logo/logo.png">
+    </div>
+  </div>
 
-    <div id="header">
-      <div id="box-left">
-        <div id="item1">
-          <img src="../img/index/nav.png"><span>MENU</span>
-        </div>
-      </div>
-      <div id="item1"><span class="glyphicon glyphicon-search"></span></div>
-      <a href="page/login.html"><div id="item3">REGISTER/LOG IN</div></a>
-      <div id="item2"><a href="#"><img src="../img/index/heart-red.png"></a>/ do you like our web?</div>
-      <div id="logo">
-        Boke
+  <div id="header-static">
+    <div id="logo">Boke</div>
+    <div id="menu-box">Menu</div>
+    <div id="login-box"><a href="#">Login</a></div>
+    <div id="search-box">
+      <div id="search">
+        <span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
       </div>
     </div>
-    <!-- 左侧导航条 -->
-    <div id="header-left">
-      <div id="head">
-        <a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
-      </div>
-      <div id="items"><a href="index.html">Home</a></div>
-      <div id="items"><a href="Food.html">Food</a> </div>
-      <div id="items"><a href="scene.html">Scenery</a> </div>
-      <div id="items"><a href="Policy.html">Policy</a> </div>
-      <div id="items"><a href="Black-board.html">Blackborad</a> </div>
-      <div id="items">About Us <span class="glyphicon glyphicon-align-right"></span></div>
-      <div id="bottom"><img src="img/index/qr_code.png"></div>
-      <div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
+  </div>
+  <!-- 左侧导航条 -->
+  <div id="header-left">
+    <div id="head">
+      <a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
     </div>
-<!--   一条华丽丽的分隔线 -->
+    <a href="index.html"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
+    <a href="Food.html"><div id="items">Food <span class="glyphicon glyphicon-fire"></span></div></a>
+    <a href="scene.html"><div id="items">Scenery <span class="glyphicon glyphicon-leaf"></span></div></a>
+    <a href="Policy.html"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
+    <a href="Black-board.html"><div id="items">写文章 <span class="glyphicon glyphicon-edit"></span></div></a>
+    <div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
+  </div>
+
+  <!-- __________________一条华丽丽的分隔线__________________-->
 	<div id="content">
 		<div id="user-head">user-head</div>
 		<div id="user-info">

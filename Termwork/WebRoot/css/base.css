@@ -180,6 +180,9 @@
             float: left;
             cursor: pointer;
         }
+        #header #item4 span{
+        	line-height: inherit;
+        }
         #header #item2{
             padding: 0 15px;
             height: 70px;

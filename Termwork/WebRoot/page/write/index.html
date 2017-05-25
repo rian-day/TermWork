@@ -1,0 +1,100 @@
+<html>
+
+  <head>
+      <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="styles/simditor.css" />
+    <script type="text/javascript" src="../..//js/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/js/module.js"></script>
+    <script type="text/javascript" src="scripts/js/uploader.js"></script>
+    <script type="text/javascript" src="scripts/js/simditor.js"></script>
+    <style type="text/css">
+
+      li span{
+        height: inherit !important;
+        line-height: inherit !important;
+      }
+      .title{
+        text-align: center;
+      }
+      .eassytitle{
+        border-style: solid;
+        border-width: 1px;
+        border-color: #ccc;
+
+        width: 100%;
+        height: 40px;
+
+        line-height: 40px;
+
+        border-radius: 20px 20px 0 0;
+      }
+      .content{
+        width: 1000px;
+
+        margin: auto;
+      }
+      .btn{
+        float: right;
+
+        background: red;
+
+        color: #fff;
+
+        text-align: center;
+
+        height: 40px;
+        width: 80px;
+        
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 20px;
+
+        cursor: pointer;
+
+        margin: 10px;
+      }
+      .btn:hover{
+        background: #ccc;
+      }
+    </style>
+
+  </head>
+  <body>
+  <div class="content">
+    <div class="title"><h1>写文章</h1></div>
+    <input type="text" name="" placeholder="标题" class="eassytitle">
+    <textarea id="editor" placeholder="这里输入内容" autofocus></textarea>
+    <button class="btn" onclick="commit()">提交</button>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var editor = new Simditor({
+      textarea: $('#editor')
+    });
+    function commit(){
+      var eassytitle=$(".eassytitle").val();
+      var content=$("textarea").val();
+      $.ajax({
+        url: 'postEassy.in',
+        type: 'POST',
+        data: {
+          eassytitle: eassytitle,
+          content: content
+        }
+      })
+      .done(function() {
+        console.log("success");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+      
+    }
+  </script>
+
+</html>

@@ -2,6 +2,9 @@ package cn.hyh;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +22,8 @@ import util.MyUtil;
 
 public class InfoIn extends HttpServlet {
 	MyUtil myutil=new MyUtil();
-	
+	Date date=new Date();
+	SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd");
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doPost(request,response);
@@ -29,6 +33,7 @@ public class InfoIn extends HttpServlet {
 		
 		String path=request.getServletPath();
 		String real_path=path.replace("page", "").replace(".in","").replace("/","");
+		//System.out.println(real_path);
 		switch(real_path){
 			case "login":
 				String username=request.getParameter("username");
@@ -112,7 +117,23 @@ public class InfoIn extends HttpServlet {
 					response.getWriter().println(itemjson);
 				}
 				break;
-				
+			case "writepostEassy":
+				String usernameEassy =(String) request.getSession().getAttribute("username");
+				String time=matter1.format(date);
+				String eassytitle =request.getParameter("eassytitle");
+				String eassycontent=request.getParameter("content");
+				if(myutil.writeEassy(usernameEassy, time, eassytitle, eassycontent)){
+					Map map = new HashMap();
+					map.put("result","complete");			
+					JSONObject itemjson=JSONObject.parseObject(JSON.toJSONString(map));
+					response.getWriter().println(itemjson);
+				}else{
+					Map map = new HashMap();
+					map.put("result","fail");			
+					JSONObject itemjson=JSONObject.parseObject(JSON.toJSONString(map));
+					response.getWriter().println(itemjson);
+				}
+				break;
 				
 		}
 	}

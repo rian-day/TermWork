@@ -3,8 +3,21 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8"
+     user="root"  password="hyh1051333460"/>
+     
+<sql:query dataSource="${snapshot}" var="result">
+SELECT * from eassy
+ORDER BY eassyid DESC;
+</sql:query>
+     
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -27,7 +40,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   <div id="header">
     <div id="box-left">
       <div id="item1">
-        <img src="img/img/index/nav.png" th:src="@{http://optpqehds.bkt.clouddn.com/bc/images/navbar/nav.png}"><span>MENU</span>
+        <img src="img/img/index/nav.png"><span>MENU</span>
       </div>
     </div>
     <div id="box-right">
@@ -65,11 +78,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <div id="head">
       <a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
     </div>
-    <a href="index.html" th:href="@{/}"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
-    <a href="Food.html" th:href="@{/food}"><div id="items">Food <span class="glyphicon glyphicon-fire"></span></div></a>
-    <a href="scene.html" th:href="@{/scene}"><div id="items">Scenery <span class="glyphicon glyphicon-leaf"></span></div></a>
-    <a href="Policy.html" th:href="@{/policy}"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
-    <a href="Black-board.html" th:href="@{/blackboard?pageNum=1}"><div id="items">写文章 <span class="glyphicon glyphicon-edit"></span></div></a>
+    <a href="index.jsp"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
+    <a href="Food.html"><div id="items">我的主页 <span class="glyphicon glyphicon-fire"></span></div></a>
+    <a href="scene.html"><div id="items">博文广场 <span class="glyphicon glyphicon-leaf"></span></div></a>
+    <a href="Policy.html"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
+    <a href="page/write/index.html"><div id="items">写文章 <span class="glyphicon glyphicon-edit"></span></div></a>
     <div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
   </div>
 
@@ -87,7 +100,22 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     </div>
 
     <div id="body1" class="container-fluid">
-          <div id="essay_box" class="col-md-6 col-lg-4 col-xs-6">
+    
+    		<c:forEach var="row" items="${result.rows}">
+	    		<div id="essay_box" class="col-md-6 col-lg-4 col-xs-6">
+		            <img src="<c:out value="${row.imgres}"></c:out>">
+		            <h4><a href="#"><b><c:out value="${row.eassytitle}"></c:out> </b></a></h4>
+		            <c:out value="${row.content}"></c:out>
+		
+		            <div id="link_box">
+		              <span class="glyphicon glyphicon-time">&nbsp;<c:out value="${row.time}"></c:out> </span>
+		              <span class="glyphicon glyphicon-edit">&nbsp;*</span>
+		              <span class="glyphicon glyphicon-heart-empty">&nbsp;<c:out value="${row.good}"></c:out> </span>
+		            </div>
+		          </div>
+    		</c:forEach>
+    		
+          <!-- <div id="essay_box" class="col-md-6 col-lg-4 col-xs-6">
             <img src="img/img/6.jpg">
             <h4><a href="#"><b>不仅仅是写代码，而是完成作品 </b></a></h4>
             <p>近来有人问起，现在似乎真得变成了码农，日出而作，日落而息。整天不停的写代码，开发业务需求，周而复始，日子长了，感到厌倦。有时回想，应该在过去的某个时期我也曾陷入过这样的循环中，后来又是如何脱离的呢？</p>
@@ -181,7 +209,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               <span class="glyphicon glyphicon-edit">&nbsp;0</span>
               <span class="glyphicon glyphicon-heart-empty">&nbsp;0</span>
             </div>
-          </div>
+          </div> -->
 
       <div class="col-xs-12">
         <div class="page-change">
