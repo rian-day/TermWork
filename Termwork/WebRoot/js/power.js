@@ -192,7 +192,7 @@ $(document).ready(function() {
 						default:
 							$("#table2").append("" +
 			"<tr class='warning'>" +
-				"<td id='username'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+ele.power+"</button></td>" +
+				"<td id='username'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>平民</button></td>" +
 				"<td >" +
 				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"修改用户信息"+ele.changeuser+"</button>" +
 				"<button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>"+"删除动态"+ele.deletedynamic+"</button>" +

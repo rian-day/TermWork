@@ -14,20 +14,76 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import hyh.mjava.User;
+
 public class MyUtil {
 	DBUtil db=new DBUtil();
 	StringUtil su=new StringUtil();
+	User user=new User();
+	//获取javabean所有属性值
+	public void showUser(){
+		System.out.println(user.getEassynum());
+		System.out.println(user.getEmail());
+		System.out.println(user.getHeadres());
+		System.out.println(user.getPower());
+		System.out.println(user.getResume());
+		System.out.println(user.getTag());
+		System.out.println(user.getUsername());
+		System.out.println(user.getUsersex());
+		for(int i=0;i<4;i++){
+			System.out.println(user.getPoweritems(i));
+		}
+	}
+	public void SaveUser(String username ,String condition,HttpSession session){
+		List list=SearchUserInfo(username,condition);
+		Map map=(Map) list.get(0);
+		
+		user.init1();
+		
+		session.setAttribute("username", map.get("name").toString());
+		user.setUsername(map.get("name").toString());
+		user.setEmail(map.get("email").toString());
+		user.setHeadres(map.get("headres").toString());
+		user.setPower(map.get("power").toString());
+		user.setResume(map.get("resume").toString());
+		user.setTag((String)map.get("tag"));
+		user.setUsersex(map.get("sex").toString());
+		//user.setEassynum((int) map.get("eassynum"));
+		list=SearchPowerItems(map.get("power").toString());
+		map=(Map) list.get(0);
+		System.out.println(map.get("changeuser"));
+		user.setPoweritems(
+				su.objectToInteger(map.get("changeuser")),
+				su.objectToInteger(map.get("deletedynamic")), 
+				su.objectToInteger(map.get("deleteeassy")), 
+				su.objectToInteger(map.get("deleteuser"))
+				);
+	}
+	public List SearchUserInfo(String username,String condition){
+		List list=null;
+		String []field={"name","email","headres","power","resume","tag","sex","power","eassynum"};
+		list=db.getData("user", field, condition);
+		return list;
+	}
+	public List SearchPowerItems(String power){
+		List list=null;
+		String []field={"changeuser","deletedynamic","deleteeassy","deleteuser"};
+		String condition ="power='"+power+"'";
+		list=db.getData("power", field, condition);
+		return list;
+	}
 	public boolean isUser(String username ,String password , HttpServletRequest request, HttpServletResponse response){
 		HttpSession session=request.getSession();
 		String condition=" name='"+username+"';";
 		String condition_2=" email='"+username+"';";
-		boolean user=false;
+		boolean result=false;
 		if(db.CheckedLogin("user", condition)){
 			//通过用户名验证
 			String db_pwd=db.getData("user", "password", condition);
 			if(password.equals(db_pwd)){
-				session.setAttribute("username", username);
-				user=true;
+				//session.setAttribute("username", username);
+				SaveUser(username,condition,session);
+				result=true;
 			}else{
 				//用户密码错误
 				
@@ -36,8 +92,9 @@ public class MyUtil {
 			//通过email验证
 			String db_email=db.getData("user", "password", condition_2);
 			if(password.equals(db_email)){
-				session.setAttribute("username", username);
-				user=true;
+				//session.setAttribute("username", username);
+				SaveUser(username,condition_2,session);
+				result=true;
 			}else{
 				//用户密码错误
 			}
@@ -45,7 +102,7 @@ public class MyUtil {
 		else{
 			//无此用户
 		}
-		return user;
+		return result;
 	}
 	public String registerUser(String username ,String password ,String email ,HttpServletRequest request, HttpServletResponse response){
 		if(db.CheckedLogin("user", "name='"+username+"';")){

@@ -106,7 +106,7 @@ ORDER BY eassyid DESC;
 		            <img src="<c:out value="${row.imgres}"></c:out>">
 		            <h4><a href="#"><b><c:out value="${row.eassytitle}"></c:out> </b></a></h4>
 		            <c:out value="${row.content}"></c:out>
-		
+		            
 		            <div id="link_box">
 		              <span class="glyphicon glyphicon-time">&nbsp;<c:out value="${row.time}"></c:out> </span>
 		              <span class="glyphicon glyphicon-edit">&nbsp;*</span>

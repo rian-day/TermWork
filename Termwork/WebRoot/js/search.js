@@ -11,10 +11,16 @@ function search(){
 		success: function(json){
 			$("#body1").html("");
 			$.each(JSON.parse(json),function(index, ele){
-					var eassyImg=ele.imgres.split("|");
+				var eassyImg=null;
+				var eassyImg1=null;
+					if(ele.imgres!=null){
+						eassyImg=ele.imgres.split("|");
+						eassyImg1=eassyImg[0];
+					}
+					
 					$("#body1").prepend(
 							"<div id='essay_box' class='col-md-6 col-lg-4 col-xs-6'>" +
-							"<img src='"+eassyImg[0]+"'>"+
+							"<img src='"+eassyImg1+"'>"+
 							"<h1>"+ele.eassytitle+"</h1>" +
 							"<p>"+ele.content+"</p> " +
 							"<div id='link_box'>" +

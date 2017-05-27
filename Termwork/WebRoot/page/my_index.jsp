@@ -3,8 +3,21 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
+<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8"
+     user="root"  password="hyh1051333460"/>
+     
+<sql:query dataSource="${snapshot}" var="result">
+SELECT * from dynamic
+ORDER BY dynamicid DESC;
+</sql:query>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -82,7 +95,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<div class="col-xs-9">
 					<div id="person_info">
 						<div class="row">
-							<div class="col-xs-2"><img src="img/img/cat1.jpg"></span></div>
+							<div class="col-xs-2" id="userhead"><img src="img/img/cat1.jpg"></span></div>
 							<div class="col-xs-2"><span class="glyphicon glyphicon-font" id="text"></span></div>
 							<div class="col-xs-2"><span class="glyphicon glyphicon-text-width" ></span></div>
 							<div class="col-xs-2"><span class="glyphicon glyphicon-facetime-video" ></span></div>
@@ -99,11 +112,12 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 							</div>
 						</div>
 					</div>
-	
+				<c:forEach var="row" items="${result.rows}">
 					<div class="goods">
 						<div class="row">
 							<div class="col-xs-2">
 								<div id="user-head"></div>
+								<c:out value="${row.username}"></c:out>
 							</div>
 							<div class="col-xs-10">
 								<div id="details">
@@ -118,21 +132,24 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 									</div>
 								</div>
 								<div id="content">
-									
+									<c:out value="${row.content}"></c:out>
 								</div>
 								<div id="bottom">
 									<ul>
 										<li><span class="glyphicon glyphicon-tag"></span> 1 2 3</li>
 										<li>热度</li>
 										<li>评论</li>
-										<li>分享</li>
+										<li><c:out value="${row.time}"></c:out> </li>
 										<li>推荐</li>
-										<li><span class="glyphicon glyphicon-heart"></span></li>
+										<li><span class="glyphicon glyphicon-heart"></span><c:out value="${row.good}"></c:out></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
+				</c:forEach>
+					
+					
 				</div>
 				<div class="col-xs-3">
 					<div id="nav">

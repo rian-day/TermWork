@@ -17,6 +17,10 @@
 			width: 100px;
 			overflow: hidden;
 		}
+		#userhead img{
+			max-width :100px;
+			max-height :70px;
+		}
 		#person_info #head-box img{
 			width: 100%;
 		}
