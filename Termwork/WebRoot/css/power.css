@@ -6,6 +6,15 @@
 
 	padding-top: 150px;
 }
+.OutToPDF-box{
+	width: 100%;
+	text-align: center;
+}
+.OutToPDF-box button{
+	width: 60%;
+	height: 60px;
+
+}
 .content h1{
 	text-align: center;
 }

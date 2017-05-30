@@ -10,13 +10,30 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8"
+     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
      user="root"  password="hyh1051333460"/>
      
 <sql:query dataSource="${snapshot}" var="result">
 SELECT * from dynamic
-ORDER BY dynamicid DESC;
+ORDER BY dynamicid DESC
+Limit 0,5;
 </sql:query>
+
+<c:choose>
+	<c:when test="${empty sessionScope.username}"></c:when>
+	<c:otherwise>
+		<sql:query var="power" dataSource="${snapshot}">
+			SELECT * 
+			From power
+			Where power in
+			(
+				Select power
+				From user
+				Where name='<c:out value="${sessionScope.username}"/>'
+			);
+		</sql:query>
+	</c:otherwise>
+</c:choose>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -29,6 +46,7 @@ ORDER BY dynamicid DESC;
 	<title>我的主页</title>
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/my_index.css">
+	<link rel="stylesheet" type="text/css" href="css/tip.css">
 </head>
 <body>
 <!-- 遮罩层 -->
@@ -104,10 +122,9 @@ ORDER BY dynamicid DESC;
 						</div>
 						<div class="row">
 							<div id="input-box">
-								<textarea></textarea>
+								<textarea id="dynamic-content"></textarea>
 								<div id="box-bottom">
-									<button class="btn btn-success">发布</button>
-									<button class="btn btn-default">表情</button>
+									<button class="btn btn-default" onclick='commit()'>表情</button>
 								</div>
 							</div>
 						</div>
@@ -127,7 +144,19 @@ ORDER BY dynamicid DESC;
 									  <div class="glyphicon glyphicon-chevron-down"></div>
 									  </button>
 									  <ul class="dropdown-menu dropdown-menu-right">
-									    <li><a href="#">删除</a></li>
+										  	<c:choose>
+										  		<c:when test="${sessionScope.username == row.username}"><li id="delete" onclick='Ddynamic(this,<c:out value="${row.dynamicid}" />)'>删除</li></c:when>
+										 
+					    						<c:when test="${empty power}"></c:when>
+												<c:otherwise>
+													<c:forEach var="powerrows" items="${power.rows}">
+														<c:if test="${powerrows.deletedynamic == 1}">
+								    						<li id="delete" onclick='Ddynamic(this,<c:out value="${row.dynamicid}" />)'>删除</li>
+								    					</c:if>
+													</c:forEach>
+												</c:otherwise>
+							    			</c:choose>
+									    
 									  </ul>
 									</div>
 								</div>
@@ -185,3 +214,4 @@ ORDER BY dynamicid DESC;
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/index-nav.js"></script>
 <script type="text/javascript" src="js/person_index.js"></script>
+<script type="text/javascript" src="js/tip.js"></script>

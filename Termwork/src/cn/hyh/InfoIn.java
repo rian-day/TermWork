@@ -23,14 +23,16 @@ import util.MyUtil;
 public class InfoIn extends HttpServlet {
 	MyUtil myutil=new MyUtil();
 	Date date=new Date();
+	PrintWriter pw;
 	SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd");
+	String time=matter1.format(date);
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doPost(request,response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		pw=response.getWriter();
 		String path=request.getServletPath();
 		String real_path=path.replace("page", "").replace(".in","").replace("/","");
 		//System.out.println(real_path);
@@ -117,24 +119,49 @@ public class InfoIn extends HttpServlet {
 					response.getWriter().println(itemjson);
 				}
 				break;
+			case "deleteuser":
+				String Dusername=request.getParameter("username");
+				if(myutil.deleteuser(Dusername)){
+					response.getWriter().print("1");
+				}else{
+					response.getWriter().print("0");
+				}
+				break;
 			case "writepostEassy":
 				String usernameEassy =(String) request.getSession().getAttribute("username");
-				String time=matter1.format(date);
 				String eassytitle =request.getParameter("eassytitle");
 				String eassycontent=request.getParameter("content");
 				if(myutil.writeEassy(usernameEassy, time, eassytitle, eassycontent)){
-					Map map = new HashMap();
-					map.put("result","complete");			
-					JSONObject itemjson=JSONObject.parseObject(JSON.toJSONString(map));
-					response.getWriter().println(itemjson);
+					pw.print("1");
 				}else{
-					Map map = new HashMap();
-					map.put("result","fail");			
-					JSONObject itemjson=JSONObject.parseObject(JSON.toJSONString(map));
-					response.getWriter().println(itemjson);
+					pw.print("0");
 				}
 				break;
-				
+			case "OutToPDF":
+				String message=myutil.OutToPDF();
+				if(message=="success"){
+					response.getWriter().print("1");
+				}else{
+					response.getWriter().print("0");
+				}
+				break;
+			case "Deassy":
+				String eassyid=request.getParameter("eassyid");
+				if(myutil.Deassy(eassyid)){
+					response.getWriter().print("1");
+				}else response.getWriter().print("0");
+				break;
+			case "Ddynamic":
+				String dynamicid=request.getParameter("dynamicid");
+				if(myutil.Ddynamic(dynamicid))response.getWriter().print("1");
+				else response.getWriter().print("0");
+				break;
+			case "insertDynamic":
+				String content=request.getParameter("content");
+				if(myutil.Idynamic(content, time, (String) request.getSession().getAttribute("username"))){
+					pw.print("1");
+				}else pw.print("0");
+				break;
 		}
 	}
 

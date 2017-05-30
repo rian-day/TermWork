@@ -1,5 +1,7 @@
 package util;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,6 +17,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import hyh.mjava.User;
+import hyh.pdf.BuildPdf;
 
 public class MyUtil {
 	DBUtil db=new DBUtil();
@@ -43,9 +46,9 @@ public class MyUtil {
 		session.setAttribute("username", map.get("name").toString());
 		user.setUsername(map.get("name").toString());
 		user.setEmail(map.get("email").toString());
-		user.setHeadres(map.get("headres").toString());
-		user.setPower(map.get("power").toString());
-		user.setResume(map.get("resume").toString());
+		//user.setHeadres(map.get("headres").toString());
+		//user.setPower(map.get("power").toString());
+		//user.setResume(map.get("resume").toString());
 		user.setTag((String)map.get("tag"));
 		user.setUsersex(map.get("sex").toString());
 		//user.setEassynum((int) map.get("eassynum"));
@@ -154,4 +157,50 @@ public class MyUtil {
 		boolean result=db.insertData("eassy", field, value);
 		return result;
 	}
+	//导出user表信息到pdf
+	public String OutToPDF(){
+		String []field={"sex","resume","name","email","tag","eassynum","power","password"};
+		String tablename="user";
+		List list=db.getData(tablename, field, "");
+		BuildPdf bp=new BuildPdf();
+		String message=bp.Build(list, field,tablename);
+		try {
+			Desktop.getDesktop().open(new File("D:/MyPDF.pdf"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return message;
+	}
+	public boolean deleteuser(String username){
+		String condition="name='"+username+"';";
+		return db.deleteData("user", condition);
+	}
+	public boolean Deassy(String eassyid){
+		String condition="eassyid='"+eassyid+"';";
+		return db.deleteData("eassy", condition);
+	}
+	public boolean Ddynamic(String dynamicid){
+		String condition="dynamicid='"+dynamicid+"';";
+		return db.deleteData("dynamic", condition);
+	}
+	public boolean Idynamic(String content,String time,String username){
+		String []field={"content","time","username"};
+		String []value={content,time,username};
+		return db.insertData("dynamic", field, value);
+	}
+//	public static void main(String[] args) {
+//		DBUtil db=new DBUtil();
+//		String []field={"sex","resume","name","email","tag","eassynum","power","password"};
+//		String tablename="user";
+//		List list=db.getData(tablename, field, "");
+//		BuildPdf bp=new BuildPdf();
+//		String message=bp.Build(list, field,tablename);
+//		try {
+//			Desktop.getDesktop().open(new File("D:/MyPDF.pdf"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

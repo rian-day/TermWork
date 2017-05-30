@@ -33,11 +33,38 @@ function commit(){
 	road();
 }
 function deleteUser(){
-	alert("delete");
+	var username=$("#myModal2").attr('name');
+	$.ajax({
+		url: 'deleteuser.in',
+		type: 'POST',
+		data: {
+			username: username
+		},
+		success : function(message){
+			if(message=="1"){
+				alert("删除成功");
+				road();
+			}else{
+				alert("发生未知错误");
+			}
+		}
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
 }
 function assign(count){
 	$("#myModal").attr('name',username[count]);
 } 
+function assignD(count){
+	$("#myModal2").attr('name',username[count]);
+}
 function road(){
 	$("#table").html('<tr class="active" id="title"><td id="username">用户名:</td><td id="power"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">地位</button></td><td id="control"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">操作</button></td></tr>');
 	$.ajax({
@@ -109,7 +136,7 @@ $(document).ready(function() {
 			"<tr class='danger'>" +
 				"<td id='username'>"+ele.name+"</td>" +
 				"<td id='power'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>总统</button></td>" +
-				"<td id='control'><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2'>删除</button>" +
+				"<td id='control'><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='assignD("+count+")'>删除</button>" +
 					"<button class='btn btn-success' data-toggle='modal' data-target='#myModal' onclick='assign("+count+")'>修改</button></td>" +
 			"</tr>"
 			);
@@ -119,7 +146,7 @@ $(document).ready(function() {
 			"<tr class='info'>" +
 				"<td id='username'>"+ele.name+"</td>" +
 				"<td id='power'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>军阀</button></td>" +
-				"<td id='control'><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2'>删除</button>" +
+				"<td id='control'><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='assignD("+count+")'>删除</button>" +
 					"<button class='btn btn-success' data-toggle='modal' data-target='#myModal' onclick='assign("+count+")'>修改</button></td>" +
 		"</tr>"
 			);
@@ -129,7 +156,7 @@ $(document).ready(function() {
 			"<tr class='warning'>" +
 				"<td id='username'>"+ele.name+"</td>" +
 				"<td id='power'><button class='btn btn-default' data-toggle='modal' data-target='#myModal3'>平民</button></td>" +
-				"<td id='control'><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2'>删除</button>" +
+				"<td id='control'><button class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='assignD("+count+")'>删除</button>" +
 					"<button class='btn btn-success' data-toggle='modal' data-target='#myModal' onclick='assign("+count+")'>修改</button></td>" +
 		"</tr>"
 			);
@@ -257,4 +284,27 @@ function commit2(){
 	.always(function() {
 		console.log("complete");
 	});
+}
+function OutToPDF(){
+	$.ajax({
+		url: 'OutToPDF.in',
+		type: 'POST',
+		success : function(message){
+			if(message=="1"){
+				//alert("导出成功");
+			}else{
+				//alert("发生未知错误");
+			}
+		}
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
 }

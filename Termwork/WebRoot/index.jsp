@@ -5,18 +5,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<c:choose>
+	<c:when test="${empty param.first}">
+		<c:set var="first" scope="page" value="0" />
+		<c:set var="last" scope="page" value="12" />
+		
+	</c:when>
+	<c:otherwise>
+		<c:set var="first" scope="page" value="${param.first}"></c:set>
+		<c:set var="last" scope="page" value="${param.last}"></c:set>
+	</c:otherwise>
+</c:choose>
+<c:set var="count" scope="page" value="0"></c:set>
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8"
+     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
      user="root"  password="hyh1051333460"/>
      
 <sql:query dataSource="${snapshot}" var="result">
 SELECT * from eassy
-ORDER BY eassyid DESC;
+ORDER BY eassyid DESC
+Limit <c:out value="${first}" />,<c:out value="${last}"/>;
 </sql:query>
+<c:choose>
+	<c:when test="${empty sessionScope.username}"></c:when>
+	<c:otherwise>
+		<sql:query var="power" dataSource="${snapshot}">
+			SELECT * 
+			From power
+			Where power in
+			(
+				Select power
+				From user
+				Where name='<c:out value="${sessionScope.username}"/>'
+			);
+		</sql:query>
+	</c:otherwise>
+</c:choose>
      
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -27,6 +57,7 @@ ORDER BY eassyid DESC;
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="css/base.css">
       <link rel="stylesheet" type="text/css" href="css/index.css">
+      <link rel="stylesheet" href="css/tip.css">
    </head>
    <body>
   <!-- 遮罩层 -->
@@ -102,10 +133,29 @@ ORDER BY eassyid DESC;
     <div id="body1" class="container-fluid">
     
     		<c:forEach var="row" items="${result.rows}">
+    			<fmt:parseNumber var="count" integerOnly="true" 
+                       type="number" value="${count+1}" />
 	    		<div id="essay_box" class="col-md-6 col-lg-4 col-xs-6">
-		            <img src="<c:out value="${row.imgres}"></c:out>">
+	    			<c:choose>
+	    				<c:when test="${empty power}"></c:when>
+						<c:otherwise>
+							<c:forEach var="powerrows" items="${power.rows}">
+								<c:if test="${powerrows.deleteeassy == 1}">
+		    						<div class="toolbar"><span class="glyphicon glyphicon-remove" onclick='deleteeassy(this,<c:out value="${row.eassyid}"></c:out>)' name='<c:out value="${row.eassyid}"></c:out>'></span></div>
+		    					</c:if>
+							</c:forEach>
+						</c:otherwise>
+	    			</c:choose>
+		            <c:choose>
+		            	<c:when test="${empty row.imgres}"></c:when>
+		            	<c:otherwise><img src="<c:out value="${row.imgres}"></c:out>"></c:otherwise>
+		            </c:choose>
 		            <h4><a href="#"><b><c:out value="${row.eassytitle}"></c:out> </b></a></h4>
-		            <c:out value="${row.content}"></c:out>
+		            <c:choose>
+		            	<c:when test="${fn:length(row.content)>100}"><c:out value="${fn:substring(row.content, 0, 100)}" />  ......</c:when>
+		            	<c:otherwise><c:out value="${row.content}" escapeXml="false"></c:out> </c:otherwise>
+		            </c:choose>
+		            
 		            
 		            <div id="link_box">
 		              <span class="glyphicon glyphicon-time">&nbsp;<c:out value="${row.time}"></c:out> </span>
@@ -130,9 +180,9 @@ ORDER BY eassyid DESC;
 
           <div id="essay_box" class="col-md-6 col-lg-4 col-xs-6">
             <img src="img/img/2.jpg">
-            <p><b>乐乎印品·手机壳定制   上线啦！</b></p>
+            <p><b>乐乎印品·手机壳定制   上线啦！</b></p>
             <p>定制你的日常私物，从手机壳开始。</p>
-            <p>上新体验价 ￥38</p>
+            <p>上新体验价 ￥38</p>
             <div id="link_box">
               <span class="glyphicon glyphicon-time">&nbsp;2017-4-5</span>
               <span class="glyphicon glyphicon-edit">&nbsp;0</span>
@@ -203,7 +253,7 @@ ORDER BY eassyid DESC;
             <img src="img/img/5.jpg">
               <p><b>来南京，听讲座，再许个新年愿望吧~</b></p>
               <p>一起旅行:</p>
-              <p>《南京线下沙龙 | 旅行摄影师镜头中的世界》，12月31日，听叽喳姐来讲述她镜头里的世界，然后许一个环球旅行的愿望，或许这便是跨年的最佳姿势。</p>
+              <p>《南京线下沙龙 | 旅行摄影师镜头中的世界》，12月31日，听叽喳姐来讲述她镜头里的世界，然后许一个环球旅行的愿望，或许这便是跨年的最佳姿势。</p>
             <div id="link_box">
               <span class="glyphicon glyphicon-time">&nbsp;2017-4-5</span>
               <span class="glyphicon glyphicon-edit">&nbsp;0</span>
@@ -214,8 +264,30 @@ ORDER BY eassyid DESC;
       <div class="col-xs-12">
         <div class="page-change">
           <ul class="pager">
-            <li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
+          			<fmt:parseNumber var="nf" integerOnly="true" 
+                       type="number" value="${first+12}" />
+                 	<fmt:parseNumber var="nl" integerOnly="true" 
+                       type="number" value="${last+12}" />
+                    <fmt:parseNumber var="pf" integerOnly="true" 
+                       type="number" value="${first-12}" />
+                 	<fmt:parseNumber var="pl" integerOnly="true" 
+                       type="number" value="${last-12}" />
+          	<c:url var="Previous" value="index.jsp">
+				<c:param name="first" value="${pf}"/>
+				<c:param name="last" value="${pl}"/>
+			</c:url>
+            <c:choose>
+            	<c:when test="${first==0}"></c:when>
+            	<c:otherwise><li><a href="<c:out value='${Previous}'/>">Previous</a></li></c:otherwise>
+            </c:choose>
+            <c:url var="Next" value="index.jsp">
+				<c:param name="first" value="${nf}"/>
+				<c:param name="last" value="${nl}"/>
+			</c:url>
+            <c:choose>
+            	<c:when test="${count<12}"></c:when>
+            	<c:otherwise><li><a href="<c:out value='${Next}'/>">Next</a></li></c:otherwise>
+            </c:choose>
           </ul>
         </div>
       </div>
@@ -227,3 +299,5 @@ ORDER BY eassyid DESC;
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/index-nav.js"></script>
       <script type="text/javascript" src="js/search.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript" src="js/tip.js"></script>

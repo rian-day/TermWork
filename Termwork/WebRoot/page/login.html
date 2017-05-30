@@ -5,6 +5,7 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<link rel="stylesheet" type="text/css" href="../css/tip.css">
 	<style type="text/css">
 		body {
 			overflow:hidden;
@@ -35,6 +36,7 @@
 </body>
 </html>	
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/tip.js"></script>
 <script type="text/javascript">
 	function login(){
 		var username=$("#username").val();
@@ -58,12 +60,15 @@
 			}
 		})
 		.done(function() {
+			tip("success");
 			console.log("success");
 		})
 		.fail(function() {
+			tip("error");
 			console.log("error");
 		})
 		.always(function() {
+			tip("complete");
 			console.log("complete");
 		});
 		

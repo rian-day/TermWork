@@ -1,79 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/power.css">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/power.css">
 </head>
 <body>
-	<div class="content">
-		<h1>权限管理表<br><small>Made By HYH</small></h1>
-		<table class="table table-hover" id="table2">
+  <div class="content">
+    <div class="OutToPDF-box">
+      <button class="btn btn-info" onclick="OutToPDF()">导出User表数据到pdf</button>
+    </div>
+    <h1>权限管理表<br><small>Made By HYH</small></h1>
+    <table class="table table-hover" id="table2">
 
 
-			<tr class="active" id="title">
-				<td id="username">地位名:</td>
-				<td id="power"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">权限</button></td>
-				<td id="control"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">操作</button></td>
-			</tr>
+      <tr class="active" id="title">
+        <td id="username">地位名:</td>
+        <td id="power"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">权限</button></td>
+        <td id="control"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">操作</button></td>
+      </tr>
 
 
-			<!-- <tr class="danger">
-				<td id="username"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">总统</button></td>
-				<td id="userpower">
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">修改用户信息</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除动态</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除文章</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除用户</button>
-		        </td>
-						<td>
-		          <button class="btn btn-warning" data-toggle="modal" data-target="#myModal2">删除</button>
-		          <button class="btn btn-success" data-toggle="modal" data-target="#myModal4">修改</button> 
-		        </td>
-			</tr>
+      <!-- <tr class="danger">
+        <td id="username"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">总统</button></td>
+        <td id="userpower">
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">修改用户信息</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除动态</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除文章</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除用户</button>
+            </td>
+            <td>
+              <button class="btn btn-warning" data-toggle="modal" data-target="#myModal2">删除</button>
+              <button class="btn btn-success" data-toggle="modal" data-target="#myModal4">修改</button> 
+            </td>
+      </tr>
 
-		      <tr class="info">
-		        <td id="username"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">军阀</button></td>
-		        <td>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">修改用户信息</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除动态</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除文章</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除用户</button>
-		        </td>
-		        <td>
-		          <button class="btn btn-warning" data-toggle="modal" data-target="#myModal2">删除</button>
-		          <button class="btn btn-success" data-toggle="modal" data-target="#myModal4">修改</button> 
-		        </td>
-		      </tr>
+          <tr class="info">
+            <td id="username"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">军阀</button></td>
+            <td>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">修改用户信息</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除动态</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除文章</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除用户</button>
+            </td>
+            <td>
+              <button class="btn btn-warning" data-toggle="modal" data-target="#myModal2">删除</button>
+              <button class="btn btn-success" data-toggle="modal" data-target="#myModal4">修改</button> 
+            </td>
+          </tr>
 
-		      <tr class="warning">
-		        <td id="username"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">平民</button></td>
-		        <td>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">修改用户信息</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除动态</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除文章</button>
-		          <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除用户</button>
-		        </td>
-		        <td>
-		          <button class="btn btn-warning" data-toggle="modal" data-target="#myModal2">删除</button>
-		          <button class="btn btn-success" data-toggle="modal" data-target="#myModal4">修改</button> 
-		        </td>
-		      </tr> -->
+          <tr class="warning">
+            <td id="username"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">平民</button></td>
+            <td>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">修改用户信息</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除动态</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除文章</button>
+              <button class="btn btn-default" data-toggle="modal" data-target="#myModal3">删除用户</button>
+            </td>
+            <td>
+              <button class="btn btn-warning" data-toggle="modal" data-target="#myModal2">删除</button>
+              <button class="btn btn-success" data-toggle="modal" data-target="#myModal4">修改</button> 
+            </td>
+          </tr> -->
       
-		</table>
+    </table>
 
-		<table class="table table-hover" id="table">
-			<tr class="active" id="title">
-				<td id="username">用户名:</td>
-				<td id="power"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">地位</button></td>
-				<td id="control"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">操作</button></td>
-			</tr>
-			<!-- <tr>
-				<button class='btn btn-success' data-toggle='modal' data-target='#myModal'>修改</button>
-			</tr> -->
-		</table>
-	</div>
+    <table class="table table-hover" id="table">
+      <tr class="active" id="title">
+        <td id="username">用户名:</td>
+        <td id="power"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">地位</button></td>
+        <td id="control"><button class="btn btn-default" data-toggle="modal" data-target="#myModal3">操作</button></td>
+      </tr>
+      <!-- <tr>
+        <button class='btn btn-success' data-toggle='modal' data-target='#myModal'>修改</button>
+      </tr> -->
+    </table>
+  </div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -85,9 +88,9 @@
       </div>
       <div class="modal-body">
         <div class="item-box" id="PayMethod">
-        	<div class="items" id="master"><span>总统</span> <input name="payMethod" type="radio" value="总统"></div>
-        	<div class="items" id="controller"><span>军阀</span> <input name="payMethod" type="radio" value="军阀"></div>
-        	<div class="items" id="people"><span>平民</span> <input name="payMethod" type="radio" value="平民"></div>
+          <div class="items" id="master"><span>总统</span> <input name="payMethod" type="radio" value="总统"></div>
+          <div class="items" id="controller"><span>军阀</span> <input name="payMethod" type="radio" value="军阀"></div>
+          <div class="items" id="people"><span>平民</span> <input name="payMethod" type="radio" value="平民"></div>
         </div>
       </div>
       <div class="modal-footer">
@@ -116,9 +119,9 @@
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-  		<div class="modal-body">
-  			<span>...</span>
-      	</div>
+      <div class="modal-body">
+        <span>...</span>
+        </div>
     </div>
   </div>
 </div>
