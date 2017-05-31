@@ -1,9 +1,10 @@
       #tip-box{
         width: 300px;
-
+		
         position: fixed;
         right: 0;
         top: 10px;
+        z-index:999;
 
         text-align: center;
         font-weight: bold;
@@ -17,10 +18,14 @@
         background: rgba(225,225,225,0.5);
 
         border-radius: 10px;
-
+		
         padding: 10px;
         margin-bottom: 5px;
       }
+      #tip-box #tip span{
+        font-size:15px;
+      }
+      
       #tip #closed{
         height: 20px;
         width: 20px;

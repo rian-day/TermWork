@@ -2,16 +2,14 @@
 	max-width: 1300px;
 	margin: auto;
 	background: #fff;
-	padding: 80px 20px;
+	padding: 160px 20px;
 }
 #content #items{
 	margin: 20px 0px;
 }
 #content #user-head{
-	height: 200px;
 	width: 200px;
 	margin: auto;
-	background: #eee;
 }
 #content #user-info{
 	width: 100%;
@@ -46,6 +44,9 @@
 	font-size: 20px;
 	padding: 0 30px;
 }
+#content #items #easy-box{
+	padding:0 30px;
+}
 #content #items #easy-name span{
 	padding-left: 30px;
 }
@@ -54,6 +55,7 @@
 	opacity: 0;
 	transition: 0.5s;
 	margin: 20px 0;
+	cursor:pointer;
 }
 #content #items #easy-content{
 	width: 100px;

@@ -6,8 +6,8 @@ function deleteeassy(ele,eassyid){
 		type: 'POST',
 		data: {eassyid: eassyid},
 		success: function(message){
-			if(message==1)tip(success);
-			else tip(failed);
+			if(message==1)tip("success");
+			else tip("failed");
 		}
 	})
 	.done(function() {

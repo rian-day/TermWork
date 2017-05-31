@@ -20,7 +20,7 @@ function search(){
 					
 					$("#body1").prepend(
 							"<div id='essay_box' class='col-md-6 col-lg-4 col-xs-6'>" +
-							"<img src='"+eassyImg1+"'>"+
+							//"<img src='"+eassyImg1+"'>"+
 							"<h1>"+ele.eassytitle+"</h1>" +
 							"<p>"+ele.content+"</p> " +
 							"<div id='link_box'>" +

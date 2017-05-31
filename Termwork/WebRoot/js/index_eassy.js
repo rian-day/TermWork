@@ -26,3 +26,25 @@ $("#content #box-left #nav").mouseout(function(event) {
 });
 //第一个版本
 //第二个版本
+function deleteeassy(ele,eassyid){
+	var a=$(ele).parent().parent("#eassy");
+	a.fadeOut('slow');
+	$.ajax({
+		url: 'Deassy.in',
+		type: 'POST',
+		data: {eassyid: eassyid},
+		success: function(message){
+			if(message==1)tip("success");
+			else tip("failed");
+		}
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+}

@@ -1,5 +1,5 @@
 #body1{
-	padding-top: 80px;
+	padding-top: 150px;
 
 }
 #body1 #top{
@@ -22,12 +22,14 @@
 	border-style: solid;
 	border-width: 2px;
 	border-color: #ccc;
+	text-align:center;
+	padding-top:20px;
 }
 #body1 #content #eassy-content{
 	float: right;
 	background: #fff;
 	width: 77%;
-	height: 1000px;
+	min-height: 500px;
 	border-style: solid;
 	border-width: 2px;
 	border-color: #ccc;

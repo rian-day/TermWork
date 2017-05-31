@@ -24,25 +24,6 @@
         li{
             list-style: none;
         }
-        #tip{
-            width: 100%;
-            height: 50px;
-            background: red;
-            color: white;
-            text-align: center;
-            line-height: 50px;
-            font-size: 20px;
-            font-weight: bold;
-            
-            transition: 1s;
-
-            position: fixed;
-            top: -50px;
-            z-index: 200;
-            
-
-            display: block;
-        }
         /*---------Ò»Ìõ»ªÀöÀöµÄ·Ö¸ôÏß----------*/
         /*µÚÒ»¸ö°æ±¾*/
         /*#header{

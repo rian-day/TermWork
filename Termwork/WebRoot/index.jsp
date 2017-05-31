@@ -15,7 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<c:when test="${empty param.first}">
 		<c:set var="first" scope="page" value="0" />
 		<c:set var="last" scope="page" value="12" />
-		
 	</c:when>
 	<c:otherwise>
 		<c:set var="first" scope="page" value="${param.first}"></c:set>
@@ -97,7 +96,12 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
   <div id="header-static">
     <div id="logo">Boke</div>
     <div id="menu-box">Menu</div>
-    <div id="login-box"><a href="#">Login</a></div>
+    <div id="login-box">
+		<c:choose>
+    		<c:when test="${sessionScope.username==null }"><a href="page/login.html"><div id="item3">Login</div></a></c:when>
+    		<c:when test="${sessionScope.username!=null }"><a href="page/my_index.jsp"><div id="item3">Hi:<c:out value="${sessionScope.username }"></c:out></div></a></c:when>
+    	</c:choose> 
+	</div>
     <div id="search-box">
       <div id="search">
         <span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
@@ -141,7 +145,7 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
 						<c:otherwise>
 							<c:forEach var="powerrows" items="${power.rows}">
 								<c:if test="${powerrows.deleteeassy == 1}">
-		    						<div class="toolbar"><span class="glyphicon glyphicon-remove" onclick='deleteeassy(this,<c:out value="${row.eassyid}"></c:out>)' name='<c:out value="${row.eassyid}"></c:out>'></span></div>
+		    						<div class="toolbar"><span class="glyphicon glyphicon-remove" onclick='deleteeassy(this,<c:out value="${row.eassyid}"></c:out>)'></span></div>
 		    					</c:if>
 							</c:forEach>
 						</c:otherwise>
@@ -150,7 +154,7 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
 		            	<c:when test="${empty row.imgres}"></c:when>
 		            	<c:otherwise><img src="<c:out value="${row.imgres}"></c:out>"></c:otherwise>
 		            </c:choose>
-		            <h4><a href="#"><b><c:out value="${row.eassytitle}"></c:out> </b></a></h4>
+		            <h4><a href='page/eassy.jsp?eassyid=<c:out value="${row.eassyid}"/>'><b><c:out value="${row.eassytitle}"></c:out> </b></a></h4>
 		            <c:choose>
 		            	<c:when test="${fn:length(row.content)>100}"><c:out value="${fn:substring(row.content, 0, 100)}" />  ......</c:when>
 		            	<c:otherwise><c:out value="${row.content}" escapeXml="false"></c:out> </c:otherwise>

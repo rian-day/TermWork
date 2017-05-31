@@ -86,7 +86,12 @@ Limit 0,5;
   <div id="header-static">
     <div id="logo">Boke</div>
     <div id="menu-box">Menu</div>
-    <div id="login-box"><a href="#">Login</a></div>
+    <div id="login-box">
+    	<c:choose>
+    		<c:when test="${sessionScope.username==null }"><a href="page/login.html"><div id="item3">Login</div></a></c:when>
+    		<c:when test="${sessionScope.username!=null }"><a href="page/my_index.jsp"><div id="item3">Hi:<c:out value="${sessionScope.username }"></c:out></div></a></c:when>
+    	</c:choose> 
+	</div>
     <div id="search-box">
       <div id="search">
         <span class="glyphicon glyphicon-search"></span><input type="text" name="search" class="form-control" placeholder="search">
@@ -124,7 +129,7 @@ Limit 0,5;
 							<div id="input-box">
 								<textarea id="dynamic-content"></textarea>
 								<div id="box-bottom">
-									<button class="btn btn-default" onclick='commit()'>表情</button>
+									<button class="btn btn-success" onclick='commit()'>提交</button>
 								</div>
 							</div>
 						</div>
