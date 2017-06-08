@@ -3,8 +3,11 @@ package hyh.pdf;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
@@ -43,7 +46,7 @@ public class BuildPdf {
 //
 //        document.close();
 //	}
-    public String Build(List list,String []fields,String tablename){
+    public String Build(List list,String []fields,String tablename,HttpServletRequest request){
     	System.out.println("start...");
     	Document document =new Document();
         try {
@@ -58,7 +61,17 @@ public class BuildPdf {
 			return "error";
 		}
         document.open();
-        
+        BaseFont baseFont=null;
+		try {
+			baseFont = BaseFont.createFont(request.getSession().getServletContext().getRealPath("/")+"css/simhei.ttf",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
+		} catch (DocumentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        Font font = new Font(baseFont);
         Map map=new HashMap();
         PdfPTable table=new PdfPTable(fields.length);
         PdfPCell cell=new PdfPCell();
@@ -76,10 +89,13 @@ public class BuildPdf {
             	map=(Map) list.get(i);
             	for(int j=0;j<fields.length;j++){
             		String items=(String) map.get(fields[j]);
+                    cell=new PdfPCell();
             		if("".equals(items)){
-            			table.addCell("NULL");
+                        cell.setPhrase(new Phrase("NULL",font));
+            			table.addCell(cell);
             		}else{
-            			table.addCell(items);
+                        cell.setPhrase(new Phrase(items,font));
+            			table.addCell(cell);
             		}
             	}
             }

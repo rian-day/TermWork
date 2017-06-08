@@ -2,6 +2,11 @@
 	padding-top: 150px;
 
 }
+#body1:after{
+	content: "";
+	display: block;
+	clear: both;
+}
 #body1 #top{
 	width: 100%;
 	height: 80px;
@@ -33,7 +38,152 @@
 	border-style: solid;
 	border-width: 2px;
 	border-color: #ccc;
+	
+	padding: 20px;
 }
 #body1 #content #eassy-content #title{
 	text-align: center;
+}
+#body1 #content #eassy-content .bottom{
+	margin-top:250px;
+}
+#body1 #content #eassy-content .bottom .box{
+	margin: auto;
+	width: 250px;
+	height: 100px;
+}
+#body1 #content #eassy-content .bottom .box .left{
+	cursor: pointer;
+	text-align: center;
+	width: 120px;
+	height: 100px;
+	float: left;
+	background: red;
+	line-height: 100px;
+	font-size: 30px;
+	color: #fff;
+	font-weight: bold;
+}
+#body1 #content #eassy-content .bottom .box .right{
+	cursor: pointer;
+	text-align: center;
+	width: 110px;
+	height: 100px;
+	float: right;
+	background: #ccc;
+	line-height: 100px;
+	font-size: 30px;
+	color: #fff;
+	font-weight: bold;
+}
+.comment-bar{
+	margin:40px 0;
+
+	width: 100%;
+	height:40px;
+	line-height: 40px;
+	background:#ccc;
+	text-align: center;
+
+	cursor: pointer;
+}
+.comment-box{
+	width: 100%;
+	background:#fff;
+
+	padding: 20px;
+}
+.comment-box:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+.comment-box .items{
+	width: 100%;
+	float: left;
+	
+	margin:15px 0;
+	
+	border:solid 1px #ccc;
+	border-width: 1px 0;
+	
+	padding:10px;
+
+}
+.comment-box .items .box-left{
+	float: left;
+
+	width: 20%;
+
+	text-align: center;
+}
+.comment-box .items .box-left img{
+	max-width: 80%;
+}
+.comment-box .items .box-right{
+	min-height:200px;
+	width: 80%;
+
+	float: left;
+
+	border:solid 2px #ccc;
+
+	padding: 20px;
+	
+	position:relative;
+	
+}
+
+.comment-box .items .box-right .toolbar-box{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+}
+.comment-box .items .box-right .toolbar-box .toolbar{
+	float: right;
+	font-size: 15px;
+	cursor: pointer;
+}
+.comment-box .items .box-right .comment-content{
+	width: 100%;
+}
+.comment-box .items .box-right .bottom-bar{
+	width:100%;
+	height:25px;
+	line-height:25px;
+	padding-left:20px;
+	
+	position:absolute;
+	bottom:25px;
+}
+.add-comment{
+	width: 100%;
+	padding: 20px;
+	float: left;
+}
+.add-comment button{
+	width: 100px;
+
+	float: right;
+
+	margin: 20px;
+}
+.add-comment .title{
+	width: 100%;
+	height: 50px;
+
+	line-height: 50px;
+	font-size: 20px;
+
+}
+.add-comment textarea{
+	width: 100%;
+	height: 100px;
+
+	border: solid 1px #ccc;
+	border-radius: 10px;
+
+	padding: 5px;
+
+	font-size: 20px;
 }

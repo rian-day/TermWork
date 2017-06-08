@@ -4,8 +4,6 @@ function check(){
 	var email=$("#email").val();
 	var password=$("#password").val();
 	var passwordRepeat=$("#passwordRepeat").val();
-	alert(password);
-	alert(passwordRepeat);
 	if(username.length>=20){
 		pass =false;
 		tip("用户名非法");

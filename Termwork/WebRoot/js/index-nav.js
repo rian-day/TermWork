@@ -272,3 +272,24 @@ function change(){
 		'color': '#ccc'
 	});
 }
+
+function showmenu(){
+	$(".menu-bottom").css({
+		'bottom': '0px',
+		property2: 'value2'
+	});
+	$("body").css({
+		'overflow': 'hidden',
+		property2: 'value2'
+	});
+}
+function removemenu(){
+	$(".menu-bottom").css({
+		'bottom': '-150px',
+		property2: 'value2'
+	});
+	$("body").css({
+		'overflow': 'auto',
+		property2: 'value2'
+	});
+}

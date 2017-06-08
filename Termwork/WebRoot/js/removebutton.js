@@ -28,3 +28,28 @@ function deleteeassy(ele,eassyid){
 		console.log("complete");
 	});
 }
+function addfollow(followername,username){
+	$.ajax({
+		url: 'addfollow.in',
+		type: 'POST',
+		data: {
+			followername: followername,
+			username:username
+		},
+		success: function(message){
+			if(message==1)tip("关注成功");
+			else tip("已经关注");
+		}
+	})
+	.done(function() {
+		console.log("success");
+		tip("完成");
+	})
+	.fail(function() {
+		console.log("error");
+		tip("发生未知错误");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+}

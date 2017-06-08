@@ -13,8 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
-     user="root"  password="hyh1051333460"/>
+     url="jdbc:mysql://115.159.181.30:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+     user="root"  password="Qcj330616153!"/>
      <c:choose>
 		<c:when test="${empty param.first}">
 			<c:set var="first" scope="page" value="0" />
@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</c:choose>
 				</h3>
 	      <span id="tag">火星人</span><br>
-				文章数 ：<c:out value="${row.eassynum}"/> <button class="btn btn-default">关注</button>
+				文章数 ：<c:out value="${row.eassynum}"/> <button class="btn btn-info" onclick="addfollow('<c:out value="${row.name }"></c:out>','<c:out value="${sessionScope.username}"></c:out>')">关注</button>
 				<div id="kind-box">
 					<a href="#">HTML</a>
 					<a href="#">JSP</a>

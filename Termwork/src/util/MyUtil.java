@@ -4,6 +4,8 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -23,6 +25,9 @@ public class MyUtil {
 	DBUtil db=new DBUtil();
 	StringUtil su=new StringUtil();
 	User user=new User();
+	Date date=new Date();
+	SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd");
+	String time=matter1.format(date);
 	//获取javabean所有属性值
 	public void showUser(){
 		System.out.println(user.getEassynum());
@@ -158,12 +163,12 @@ public class MyUtil {
 		return result;
 	}
 	//导出user表信息到pdf
-	public String OutToPDF(){
+	public String OutToPDF(HttpServletRequest request){
 		String []field={"sex","resume","name","email","tag","eassynum","power","password"};
 		String tablename="user";
 		List list=db.getData(tablename, field, "");
 		BuildPdf bp=new BuildPdf();
-		String message=bp.Build(list, field,tablename);
+		String message=bp.Build(list, field,tablename,request);
 		try {
 			Desktop.getDesktop().open(new File("D:/MyPDF.pdf"));
 		} catch (IOException e) {
@@ -189,6 +194,30 @@ public class MyUtil {
 		String []value={content,time,username};
 		return db.insertData("dynamic", field, value);
 	}
+	public boolean addcomment(String tableName,String username,String eassyid,String commentcontent){
+		String []field={"content","username","time","eassyid"};
+		String []value={commentcontent,username,time,eassyid};
+		return db.insertData(tableName, field, value);
+	}
+	public List moreload(String start,String end,String tableName){
+		String []field={"username","content","time","good","eassytitle","eassyid"};
+		String condition="";
+		List list=db.getDateLimit(tableName, start, end, field, condition,"eassyid");
+		return list;
+	}
+	public boolean addfollow(String followername,String username){
+		String condition="followername = '"+followername+"' AND username= '"+username+"';";
+		if(db.CheckedLogin("follow", condition)){
+			return false;
+		}
+		String []field={"followername","username"};
+		String []value={followername,username};
+		System.out.println("follower:"+followername);
+		System.out.println("username:"+username);
+		return db.insertData("follow", field, value);
+	}
+	
+	
 //	public static void main(String[] args) {
 //		DBUtil db=new DBUtil();
 //		String []field={"sex","resume","name","email","tag","eassynum","power","password"};

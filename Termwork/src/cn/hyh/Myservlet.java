@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import hyh.excle.in.ExcleToDB;
 import hyh.mjava.User;
 import util.DBUtil;
 import util.StringUtil;
@@ -21,6 +22,8 @@ public class Myservlet extends HttpServlet {
 	DBUtil db;
 	PrintWriter out;
 	StringUtil su;
+	private ExcleToDB excleToDB = new ExcleToDB();
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doPost(request,response);
@@ -43,6 +46,8 @@ public class Myservlet extends HttpServlet {
 				break;
 			case "change_password":
 				change_password(request,response);
+			case "uploadexcel":
+				excleToDB.uploadExcle(request);
 		}
 	}
 	public void login(HttpServletRequest request, HttpServletResponse response){

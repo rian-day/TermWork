@@ -1,0 +1,41 @@
+a,a:hover{
+	color: #000;
+}
+.content:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.item{
+	width: 25%;
+	float: left;
+	height: 400px;
+
+	padding: 20px;
+}
+.item .view{
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	position: relative;
+	overflow: hidden;
+}
+.item .view .bottom{
+	background: rgba(225,225,225,0.75);
+
+
+	height: 150px;
+	width: 100%;
+
+	padding-left: 20px;
+
+	font-size: 20px;
+
+	line-height: 75px;
+
+	position: absolute;
+	bottom: -75px;
+}

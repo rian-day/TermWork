@@ -108,6 +108,40 @@ public class DBUtil {
 		return out;
 	}
 	
+	public List getDateLimit(String tableName,String start,String end,String []field ,String condition,String idName){
+		List list=new ArrayList();
+		String strField = "", sql = "";
+		for (int i = 0; i < field.length; i++) {
+			strField += field[i] + ",";
+		}
+		strField = strField.substring(0, strField.lastIndexOf(","));
+		if (condition == null || condition == "") {
+			sql = "select " + strField + " from " + tableName+" ORDER BY "+idName+" DESC "+" limit "+start+","+end;
+		} else {
+			sql = "select " + strField + " from " + tableName + " where "
+					+ condition;
+		}
+		try {
+			prestmt = conn.prepareStatement(sql);
+			rs = prestmt.executeQuery();
+			while(rs.next()){
+				Map<String,String> map=new HashMap();
+				String[] temp = new String[field.length]; 
+				for(int i=0;i<field.length;i++){
+					temp[i] = rs.getString(field[i]);
+				}
+				for(int i=0;i<temp.length;i++){
+					map.put(field[i], temp[i]);
+				}
+				list.add(map);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return list;
+	}
+	
 	public List getData(String tableName, String[] field, String condition) {
 		List list=new ArrayList();
 		String strField = "", sql = "";

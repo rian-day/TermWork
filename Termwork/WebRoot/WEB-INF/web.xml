@@ -55,6 +55,10 @@
     <servlet-name>InfoIn</servlet-name>
     <url-pattern>*.in</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Myservlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
   
   
   

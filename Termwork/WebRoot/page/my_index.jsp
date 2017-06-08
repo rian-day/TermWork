@@ -10,8 +10,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
-     user="root"  password="hyh1051333460"/>
+     url="jdbc:mysql://115.159.181.30:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+     user="root"  password="Qcj330616153!"/>
      
 <sql:query dataSource="${snapshot}" var="result">
 SELECT * from dynamic
@@ -104,9 +104,9 @@ Limit 0,5;
       <a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
     </div>
     <a href="index.jsp"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
-    <a href="Food.html"><div id="items">我的主页  <span class="glyphicon glyphicon-fire"></span></div></a>
-    <a href="scene.html"><div id="items">博文广场 <span class="glyphicon glyphicon-leaf"></span></div></a>
-    <a href="Policy.html"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
+    <a href="page/my_index.jsp"><div id="items">我的主页  <span class="glyphicon glyphicon-fire"></span></div></a>
+    <a href="page/index_eassy.jsp"><div id="items">博文广场 <span class="glyphicon glyphicon-leaf"></span></div></a>
+    <a href="#"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
     <a href="page/write/index.html"><div id="items">写文章 <span class="glyphicon glyphicon-edit"></span></div></a>
     <div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
   </div>
@@ -118,7 +118,7 @@ Limit 0,5;
 				<div class="col-xs-9">
 					<div id="person_info">
 						<div class="row">
-							<div class="col-xs-2" id="userhead"><img src="img/img/cat1.jpg"></span></div>
+							<div class="col-xs-2" id="userhead"><a href="person_info_set.html"><img src="img/img/cat1.jpg"></a></span></div>
 							<div class="col-xs-2"><span class="glyphicon glyphicon-font" id="text"></span></div>
 							<div class="col-xs-2"><span class="glyphicon glyphicon-text-width" ></span></div>
 							<div class="col-xs-2"><span class="glyphicon glyphicon-facetime-video" ></span></div>
@@ -187,27 +187,14 @@ Limit 0,5;
 				</div>
 				<div class="col-xs-3">
 					<div id="nav">
+						<div id="nav">
 						<ul>
-	<!-- 						<li id="items">
-								username
-								<div class="dropdown">
-								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" 	aria-haspopup="true" aria-expanded="true">
-								    <span class="caret"></span>
-								  </button>
-								  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" id="">
-								    <li class="dropdown-header">dropdown</li>
-								    <li><a href="#">Something else here</a></li>
-								    <li role="separator" class="divider"></li>
-								    <li><a href="#">Separated link</a></li>
-								  </ul>
-								</div>
-							</li> -->
-							<li id="items">我的文章</li>
-							<li id="items">关注</li>
-							<li id="items">通知</li>
-							<li id="items">私信</li>
-							<li id="items">个人信息设置</li>
+							<a href="page/person_index.jsp?username=<c:out value='${sessionScope.username }'/>"><li ><span class="glyphicon glyphicon-list-alt"></span>我的文章</li></a>
+							<a href="page/follow.jsp"><li ><span class="glyphicon glyphicon-screenshot"></span>我的关注</li></a>
+							<a href="page/person_info_set.html"><li ><span class="glyphicon glyphicon-wrench"></span>个人信息设置</li></a>
+							<a href="page/power.html"><li ><span class="glyphicon glyphicon-wrench"></span>(权限管理)</li></a>
 						</ul>
+					</div>
 					</div>
 				</div>
 			</div>

@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </c:choose>
 <c:set var="count" scope="page" value="0"></c:set>
 <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
-     user="root"  password="hyh1051333460"/>
+     url="jdbc:mysql://115.159.181.30:3306/termwork?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+     user="root"  password="Qcj330616153!"/>
      
 <sql:query dataSource="${snapshot}" var="result">
 SELECT * from eassy
@@ -114,9 +114,9 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
       <a href="#">ENGLISH</a><span id="text">close <span class="glyphicon glyphicon-remove"></span></span>
     </div>
     <a href="index.jsp"><div id="items">Home <span class="glyphicon glyphicon-map-marker"></span></div></a>
-    <a href="Food.html"><div id="items">我的主页 <span class="glyphicon glyphicon-fire"></span></div></a>
-    <a href="scene.html"><div id="items">博文广场 <span class="glyphicon glyphicon-leaf"></span></div></a>
-    <a href="Policy.html"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
+    <a href="page/my_index.jsp"><div id="items">我的主页 <span class="glyphicon glyphicon-fire"></span></div></a>
+    <a href="page/index_eassy.jsp"><div id="items">博文广场 <span class="glyphicon glyphicon-leaf"></span></div></a>
+    <a href="#"><div id="items">提问 <span class="glyphicon glyphicon-comment"></span></div></a>
     <a href="page/write/index.html"><div id="items">写文章 <span class="glyphicon glyphicon-edit"></span></div></a>
     <div id="change">Did your eye tired ?<span class="glyphicon glyphicon-off"></span><!-- 此处点击后整个网页变成护眼模式 --></div>
   </div>

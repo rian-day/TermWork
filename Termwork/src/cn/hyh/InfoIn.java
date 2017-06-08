@@ -22,8 +22,8 @@ import util.MyUtil;
 
 public class InfoIn extends HttpServlet {
 	MyUtil myutil=new MyUtil();
-	Date date=new Date();
 	PrintWriter pw;
+	Date date=new Date();
 	SimpleDateFormat matter1=new SimpleDateFormat("yyyy-MM-dd");
 	String time=matter1.format(date);
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -138,7 +138,7 @@ public class InfoIn extends HttpServlet {
 				}
 				break;
 			case "OutToPDF":
-				String message=myutil.OutToPDF();
+				String message=myutil.OutToPDF(request);
 				if(message=="success"){
 					response.getWriter().print("1");
 				}else{
@@ -161,6 +161,34 @@ public class InfoIn extends HttpServlet {
 				if(myutil.Idynamic(content, time, (String) request.getSession().getAttribute("username"))){
 					pw.print("1");
 				}else pw.print("0");
+				break;
+			case "addcommit":
+				username=request.getParameter("username");
+				eassyid=request.getParameter("eassyid");
+				String commentcontent=request.getParameter("commentcontent");
+				if(myutil.addcomment("eassycomment", username ,eassyid, commentcontent)){
+					pw.print("1");
+				}else{
+					pw.print("0");
+				}
+				break;
+			case "moreload":
+				String start=request.getParameter("start");
+				String end=request.getParameter("end");
+				tableName="eassy";
+				List list=myutil.moreload(start, end, tableName);
+				json=JSON.toJSONString(list);
+				pw.println(json);
+				break;
+			case "addfollow":
+				String followername=request.getParameter("followername");
+				username=request.getParameter("username");
+				System.out.println("followername:"+followername);
+				if(myutil.addfollow(followername, username)){
+					pw.print("1");
+				}else{
+					pw.print("0");
+				}
 				break;
 		}
 	}

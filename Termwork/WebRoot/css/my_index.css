@@ -110,17 +110,25 @@
 		#nav li{
 			margin: auto;
 			height: 50px;
-			width: 50px;
-			border-radius: 50%;
-			background: #eee;
-			cursor: pointer;
+			width: 100%;
+
+			font-size: 15px;
+			line-height: 50px;
+			padding-left: 30px;
+			color: black;
+
+			background: #fff;
 
 			text-align: center;
-			transition: 0.5s;
+		}
+		#nav li span{
+			font-size: 20px;
+			float: left;
+			height: 50px;
+			line-height: 50px;
 		}
 		#nav li:hover{
-			height: 100px;
-			width: 100px;
+			background:#ccc;
 		}
 		#delete{
 			height:30px;

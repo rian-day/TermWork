@@ -3,6 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -23,9 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- 	welcome:<%=request.getAttribute("username") %>
- 	<br>
+ 	welcome:<c:out value="${sessionScope.username }"></c:out>
+ 	<br>您没有权限进入页面
 
- 	<%=session.getAttribute("id") %>
   </body>
 </html>

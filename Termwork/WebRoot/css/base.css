@@ -3,8 +3,11 @@
             border: 0px;
             margin: 0px;
         }
+        a,a:hover{
+        	text-decoration: none;
+        }
         body{
-            background: #F2F2F3;
+            background: #F2F2F2;
             transition: 1s;
         }
         #header span{
@@ -23,6 +26,36 @@
         }
         li{
             list-style: none;
+        }
+        #tip{
+            width: 100%;
+            height: 50px;
+            background: red;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            
+            transition: 1s;
+
+            position: fixed;
+            top: -50px;
+            z-index: 200;
+            
+
+            display: block;
+
+        }
+        #tag{
+            background: #eee;
+
+            height: 40px;
+            line-height: 40px;
+
+            border-radius: 20px;
+
+            padding: 10px;
         }
         /*---------Ò»Ìõ»ªÀöÀöµÄ·Ö¸ôÏß----------*/
         /*µÚÒ»¸ö°æ±¾*/
@@ -65,7 +98,7 @@
             width: 100%;
             transition: 1s;
             height: 70px;
-            background: #F2F2F3;
+            background: #FdFdFd;
             border-style:solid;
             border-bottom-width:1px;
             border-color:#ccc;
@@ -162,7 +195,8 @@
             cursor: pointer;
         }
         #header #item4 span{
-        	line-height: inherit;
+        	height:70px;
+        	line-height:70px;
         }
         #header #item2{
             padding: 0 15px;
@@ -450,10 +484,9 @@
         }
         /*-------Ò»Ìõ»ªÀöÀöµÄ·Ö¸îÏß----------*/
         
-        .footer{
+/*        .footer{
             padding: 30px;
             width: 100%;
-            /*background: #2c3e50;*/
             background: #fff;
         }
         .footer #top{
@@ -494,6 +527,105 @@
         }
         .footer #ul-group-box .row{
             text-align: left;
+        }*/
+        .foot{
+            margin-top: 50px;
+            width: 100%;
+            background: #fff;
+            height: 150px;
+        }
+        .foot .content{
+            width: 1300px;
+            margin: auto;
+            padding: 5px 0;
+        }
+        .foot .content li{
+            float: left;
+            height: 30px;
+            line-height: 30px;
+
+            padding: 0px 20px;
+
+            border-style: solid;
+            border-right-width: 1px;
+            border-color: #ccc;
+        }
+        .foot .content .box-top{
+            height: 40px;
+            width: 100%;
+            border-style: solid;
+            border-bottom-width: 1px;
+            border-color: #ccc;
+        }
+        /*返回上级页面*/
+        .returnlast{
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+
+            height: 100px;
+            width: 100px;
+
+
+            padding: 20px;
+
+            font-size: 50px;
+            text-align: center;
+        }
+        .returnlast a{
+            color: #000;
+        }
+        /*底部菜单*/
+        .bottommenu{
+            cursor: pointer;
+
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+
+            height: 100px;
+            width: 100px;
+
+
+            padding: 20px;
+
+            font-size: 50px;
+            text-align: center;
+        }
+        .menu-bottom{
+            transition: 1s;
+            position: fixed;
+            bottom: -150px;
+            z-index: 12;
+
+            background: #fff;
+
+            padding: 25px;
+
+            width: 100%;
+            height: 150px;
+        }
+        .menu-bottom li{
+            float: left;
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+
+            color: #000;
+            font-size: 20px;
+        }
+        .menu-bottom li:hover{
+            background: #ccc;
+        }
+        .menu-bottom #remove{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+
+            padding: 20px;
+            font-size: 20px;
+            cursor: pointer;
         }
         @keyframes box-right{
             0%{
