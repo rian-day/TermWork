@@ -154,9 +154,15 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
 		            	<c:when test="${empty row.imgres}"></c:when>
 		            	<c:otherwise><img src="<c:out value="${row.imgres}"></c:out>"></c:otherwise>
 		            </c:choose>
-		            <h4><a href='page/eassy.jsp?eassyid=<c:out value="${row.eassyid}"/>'><b><c:out value="${row.eassytitle}"></c:out> </b></a></h4>
+		            <h4>
+		            	<a href='page/eassy.jsp?eassyid=<c:out value="${row.eassyid}"/>'><b>
+		            		<c:out value="${row.eassytitle}"></c:out> </b>
+		            	</a>
+		            </h4>
 		            <c:choose>
-		            	<c:when test="${fn:length(row.content)>100}"><c:out value="${fn:substring(row.content, 0, 100)}" />  ......</c:when>
+		            	<c:when test="${fn:length(row.content)>100}">
+		            		<c:out value="${fn:substring(row.content, 0, 100)}" />  ......
+		            	</c:when>
 		            	<c:otherwise><c:out value="${row.content}" escapeXml="false"></c:out> </c:otherwise>
 		            </c:choose>
 		            
@@ -282,7 +288,9 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
 			</c:url>
             <c:choose>
             	<c:when test="${first==0}"></c:when>
-            	<c:otherwise><li><a href="<c:out value='${Previous}'/>">Previous</a></li></c:otherwise>
+            	<c:otherwise>
+            		<li><a href="<c:out value='${Previous}'/>">Previous</a></li>
+            	</c:otherwise>
             </c:choose>
             <c:url var="Next" value="index.jsp">
 				<c:param name="first" value="${nf}"/>
@@ -290,7 +298,9 @@ Limit <c:out value="${first}" />,<c:out value="${last}"/>;
 			</c:url>
             <c:choose>
             	<c:when test="${count<12}"></c:when>
-            	<c:otherwise><li><a href="<c:out value='${Next}'/>">Next</a></li></c:otherwise>
+            	<c:otherwise>
+            		<li><a href="<c:out value='${Next}'/>">Next</a></li>
+            	</c:otherwise>
             </c:choose>
           </ul>
         </div>

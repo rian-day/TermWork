@@ -93,7 +93,7 @@ public class ExcleToDB {
 	            			excleuser.getTag(),excleuser.getPower(),excleuser.getPassword()};
 	                db.insertData(tableName, field, value);
 	            }else {
-	                //存在就更新
+	                //存在就后台打印
 	            	System.out.println("用户:"+username+" 已存在");
 	            }
 	        }

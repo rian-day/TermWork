@@ -63,7 +63,9 @@ public class BuildPdf {
         document.open();
         BaseFont baseFont=null;
 		try {
-			baseFont = BaseFont.createFont(request.getSession().getServletContext().getRealPath("/")+"css/simhei.ttf",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
+			baseFont = BaseFont.createFont(
+					request.getSession().getServletContext().getRealPath("/")
+					+"css/simhei.ttf",BaseFont.IDENTITY_H,BaseFont.NOT_EMBEDDED);
 		} catch (DocumentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

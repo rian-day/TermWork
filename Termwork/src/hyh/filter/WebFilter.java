@@ -18,7 +18,6 @@ public class WebFilter extends HttpServlet implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res,FilterChain chain) throws IOException, ServletException{ 
-		 // 将请求和响应强制转换成Http形式
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
 
@@ -30,7 +29,7 @@ public class WebFilter extends HttpServlet implements Filter {
         MyRequest myRequest = new MyRequest(request);
 
         // 注意：放行的时候应该传入增强后的request对象
-        chain.doFilter(req, res);
+        chain.doFilter(myRequest, response);
 	}
 
 	@Override

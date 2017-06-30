@@ -35,8 +35,8 @@ public class Service {
             System.out.println(clos+" rows:"+rows);
             for (int i = 1; i < rows; i++) {
                 for (int j = 0; j < clos; j++) {
-                    //第一个是列数，第二个是行数
-                    String headres=rs.getCell(j++, i).getContents();//默认最左边编号也算一列 所以这里得j++
+                    
+                    String headres=rs.getCell(j++, i).getContents();              //默认最左边编号也算一列 所以这里得j++
                     String sex=rs.getCell(j++, i).getContents();
                     String resume=rs.getCell(j++, i).getContents();
                     String name=rs.getCell(j++, i).getContents();
